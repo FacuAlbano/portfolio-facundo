@@ -8,18 +8,6 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   
-  // Configuración de compilación
-  experimental: {
-    optimizeCss: process.env.NODE_ENV === 'production',
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
-  },
-  
-  // Configuración de compresión
-  compress: true,
-  
-  // Configuración de powered by
-  poweredByHeader: false,
-  
   // Configuración de react strict mode
   reactStrictMode: true,
 };
