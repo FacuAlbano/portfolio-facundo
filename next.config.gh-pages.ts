@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
   assetPrefix: './',
-  basePath: '/portfolio-facundo',
   images: {
     unoptimized: true,
   },
