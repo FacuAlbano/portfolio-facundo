@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   // Configuración para export estático (GitHub Pages)
   output: 'export',
   trailingSlash: true,
+  assetPrefix: './',
+  basePath: '/portfolio-facundo',
   images: {
     unoptimized: true,
   },
