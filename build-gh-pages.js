@@ -8,7 +8,7 @@ try {
   
   // Ejecutar el build
   console.log('🚀 Iniciando build...');
-  execSync('next build', { stdio: 'inherit' });
+  execSync('npx next build', { stdio: 'inherit' });
   console.log('✅ Build completado exitosamente');
 } catch (error) {
   console.error('❌ Error durante el build:', error.message);
