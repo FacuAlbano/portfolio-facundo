@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 export default function NotFound() {
   return (
     <div style={{ 
@@ -28,7 +26,8 @@ export default function NotFound() {
         }}>
           Página no encontrada
         </p>
-        <Link 
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a 
           href="/" 
           style={{
             display: 'inline-block',
@@ -42,7 +41,7 @@ export default function NotFound() {
           }}
         >
           Volver al inicio
-        </Link>
+        </a>
       </div>
     </div>
   );
