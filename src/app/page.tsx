@@ -395,6 +395,17 @@ export default function Home() {
     setShowContactModal(false);
   };
 
+  // Smooth scroll to section
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   // Download CV + Cover Letter handler
   const downloadCV = () => {
     // Definir archivos según idioma
@@ -662,7 +673,7 @@ export default function Home() {
         </section>
 
         {/* Sobre Mí */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800 transition-colors duration-300">
+        <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800 transition-colors duration-300">
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -698,7 +709,7 @@ export default function Home() {
         </section>
 
         {/* Habilidades */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800">
+        <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800">
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -804,7 +815,7 @@ export default function Home() {
         </section>
 
         {/* Proyectos */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+        <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
           <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -853,8 +864,13 @@ export default function Home() {
                                 className="w-full h-full object-cover"
                                 controls
                                 autoPlay
-                                onEnded={() => setVideoPlaying(null)}
-                                onPause={() => setVideoPlaying(null)}
+                                onEnded={() => {
+                                  const video = document.querySelector(`video[data-project="${project.name}"]`) as HTMLVideoElement;
+                                  if (video) {
+                                    video.currentTime = 0; // Restart from beginning
+                                    video.play(); // Auto restart
+                                  }
+                                }}
                                 onLoadedData={(e) => {
                                   const video = e.target as HTMLVideoElement;
                                   video.playbackRate = 2.0; // Velocidad x2
@@ -863,6 +879,7 @@ export default function Home() {
                                   const video = e.target as HTMLVideoElement;
                                   video.playbackRate = 2.0; // Asegurar velocidad x2
                                 }}
+                                data-project={project.name}
                               >
                                 <source src={project.video} type="video/mp4" />
                                 Tu navegador no soporta videos HTML5.
@@ -903,6 +920,11 @@ export default function Home() {
                                     const video = e.target as HTMLVideoElement;
                                     video.playbackRate = 2.0; // Asegurar velocidad x2
                                   }}
+                                  onEnded={(e) => {
+                                    const video = e.target as HTMLVideoElement;
+                                    video.currentTime = 10; // Restart from 10 seconds
+                                    video.play(); // Auto restart
+                                  }}
                                 >
                                   <source src={project.video} type="video/mp4" />
                                 </video>
@@ -938,7 +960,7 @@ export default function Home() {
                             <span className="px-3 py-1 bg-primary-600 text-white text-sm font-medium rounded-full shadow-lg">
                               {project.category}
                             </span>
-                            {!videoPlaying && (
+                            {videoPlaying !== project.name && (
                               <span className="px-2 py-1 bg-accent-500 text-white text-xs font-medium rounded-full shadow-lg animate-pulse">
                                 Auto 2x
                               </span>
@@ -1159,7 +1181,7 @@ export default function Home() {
         </section>
 
         {/* Contacto */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800 transition-colors duration-300">
+        <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800 transition-colors duration-300">
           <div className="max-w-7xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1248,18 +1270,30 @@ export default function Home() {
             <div className="text-center">
               <h3 className="font-semibold text-lg mb-4">Enlaces</h3>
               <div className="space-y-2">
-                <a href="#about" className="block text-slate-400 hover:text-primary-400 transition-colors duration-200">
-                  Sobre Mí
-                </a>
-                <a href="#skills" className="block text-slate-400 hover:text-primary-400 transition-colors duration-200">
-                  Habilidades
-                </a>
-                <a href="#projects" className="block text-slate-400 hover:text-primary-400 transition-colors duration-200">
-                  Proyectos
-                </a>
-                <a href="#contact" className="block text-slate-400 hover:text-primary-400 transition-colors duration-200">
-                  Contacto
-                </a>
+                <button 
+                  onClick={() => scrollToSection('about')}
+                  className="block text-slate-400 hover:text-primary-400 transition-colors duration-200 cursor-pointer"
+                >
+                  {language === 'es' ? 'Sobre Mí' : 'About Me'}
+                </button>
+                <button 
+                  onClick={() => scrollToSection('skills')}
+                  className="block text-slate-400 hover:text-primary-400 transition-colors duration-200 cursor-pointer"
+                >
+                  {language === 'es' ? 'Habilidades' : 'Skills'}
+                </button>
+                <button 
+                  onClick={() => scrollToSection('projects')}
+                  className="block text-slate-400 hover:text-primary-400 transition-colors duration-200 cursor-pointer"
+                >
+                  {language === 'es' ? 'Proyectos' : 'Projects'}
+                </button>
+                <button 
+                  onClick={() => scrollToSection('contact')}
+                  className="block text-slate-400 hover:text-primary-400 transition-colors duration-200 cursor-pointer"
+                >
+                  {language === 'es' ? 'Contacto' : 'Contact'}
+                </button>
               </div>
             </div>
             
