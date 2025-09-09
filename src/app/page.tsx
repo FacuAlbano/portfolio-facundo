@@ -120,7 +120,7 @@ export default function Home() {
             status: "Proyecto Final - Demostración de Competencias",
             link: null,
             github: "https://github.com/FacuAlbano/TransitoRosario",
-            video: "/videos/trro-demo.mp4", // Placeholder para tu video futuro
+            video: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4", // Video temporal para deploy
             image: "/images/trro-preview.jpg",
             features: ["Gestión de usuarios", "Dashboard analítico", "Sistema de reportes", "API RESTful"],
             category: "Full Stack"
@@ -132,7 +132,7 @@ export default function Home() {
             link: "https://facualbano.github.io/alterna-servicios-electricos",
             status: "En Producción - Sitio Corporativo",
             github: "https://github.com/FacuAlbano/alterna-servicios-electricos",
-            video: "/videos/alterna-demo.mp4", // Placeholder para tu video futuro
+            video: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4", // Video temporal para deploy
             image: "/images/alterna-preview.jpg",
             features: ["Diseño responsive", "Optimización SEO", "Formularios contacto", "Galería de servicios"],
             category: "Frontend"
@@ -144,7 +144,7 @@ export default function Home() {
             link: 'https://github.com/FacuAlbano/portfolio-facundo',
             status: "Proyecto Actual - En Desarrollo",
             github: "https://github.com/FacuAlbano/portfolio-facundo",
-            video: "/videos/portfolio-demo.mp4", // Placeholder para tu video futuro
+            video: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4", // Video temporal para deploy
             image: "/images/portfolio-preview.jpg",
             features: ["Animaciones fluidas", "Modo oscuro", "Multiidioma", "Diseño responsive"],
             category: "Frontend"
@@ -265,7 +265,7 @@ export default function Home() {
             status: "Final Project - Skills Demonstration",
             link: null,
             github: "https://github.com/FacuAlbano/TransitoRosario",
-            video: "/videos/trro-demo.mp4",
+            video: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
             image: "/images/trro-preview.jpg",
             features: ["User management", "Analytics dashboard", "Report system", "RESTful API"],
             category: "Full Stack"
@@ -277,7 +277,7 @@ export default function Home() {
             link: "https://facualbano.github.io/alterna-servicios-electricos",
             status: "In Production - Corporate Website",
             github: "https://github.com/FacuAlbano/alterna-servicios-electricos",
-            video: "/videos/alterna-demo.mp4",
+            video: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
             image: "/images/alterna-preview.jpg",
             features: ["Responsive design", "SEO optimization", "Contact forms", "Service gallery"],
             category: "Frontend"
@@ -289,7 +289,7 @@ export default function Home() {
             link: 'https://github.com/FacuAlbano/portfolio-facundo',
             status: "Current Project - In Development",
             github: "https://github.com/FacuAlbano/portfolio-facundo",
-            video: "/videos/portfolio-demo.mp4",
+            video: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
             image: "/images/portfolio-preview.jpg",
             features: ["Smooth animations", "Dark mode", "Multi-language", "Responsive design"],
             category: "Frontend"
