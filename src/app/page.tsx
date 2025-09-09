@@ -853,31 +853,52 @@ export default function Home() {
                                 autoPlay
                                 onEnded={() => setVideoPlaying(null)}
                                 onPause={() => setVideoPlaying(null)}
+                                onLoadedData={(e) => {
+                                  const video = e.target as HTMLVideoElement;
+                                  video.playbackRate = 2.0; // Velocidad x2
+                                }}
+                                onCanPlay={(e) => {
+                                  const video = e.target as HTMLVideoElement;
+                                  video.playbackRate = 2.0; // Asegurar velocidad x2
+                                }}
                               >
                                 <source src={project.video} type="video/mp4" />
                                 Tu navegador no soporta videos HTML5.
                               </video>
                               
-                              {/* Close Video Button */}
-                              <button
-                                onClick={() => setVideoPlaying(null)}
-                                className="absolute top-4 right-4 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-200 z-10"
-                              >
-                                <X className="w-5 h-5" />
-                              </button>
+                              {/* Video Controls Overlay */}
+                              <div className="absolute top-4 right-4 flex gap-2 z-10">
+                                {/* Speed Indicator */}
+                                <div className="px-2 py-1 bg-black/70 text-white text-xs font-medium rounded">
+                                  2x
+                                </div>
+                                {/* Close Video Button */}
+                                <button
+                                  onClick={() => setVideoPlaying(null)}
+                                  className="w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-200"
+                                >
+                                  <X className="w-5 h-5" />
+                                </button>
+                              </div>
                             </div>
                           ) : (
                             /* Video Thumbnail/Preview */
                             <div className="absolute inset-0">
                               {/* Background Video Preview (muted) */}
                               <video
-                                className="w-full h-full object-cover opacity-30"
+                                className="w-full h-full object-cover opacity-40"
                                 muted
                                 loop
+                                autoPlay
                                 playsInline
                                 onLoadedData={(e) => {
                                   const video = e.target as HTMLVideoElement;
+                                  video.playbackRate = 2.0; // Velocidad x2
                                   video.currentTime = 10; // Start at 10 seconds for better preview
+                                }}
+                                onCanPlay={(e) => {
+                                  const video = e.target as HTMLVideoElement;
+                                  video.playbackRate = 2.0; // Asegurar velocidad x2
                                 }}
                               >
                                 <source src={project.video} type="video/mp4" />
@@ -895,10 +916,10 @@ export default function Home() {
                                     <Play className="w-8 h-8 text-primary-600 ml-1" />
                                   </motion.button>
                                   <p className="text-white font-semibold text-lg drop-shadow-lg">
-                                    {language === 'es' ? 'Ver Demo' : 'Watch Demo'}
+                                    {language === 'es' ? 'Ver Demo Completo' : 'Watch Full Demo'}
                                   </p>
                                   <p className="text-white/80 text-sm mt-1">
-                                    {language === 'es' ? 'Click para reproducir' : 'Click to play'}
+                                    {language === 'es' ? 'Click para ver a tamaño completo (2x)' : 'Click for full size (2x speed)'}
                                   </p>
                                 </div>
                               </div>
@@ -906,10 +927,15 @@ export default function Home() {
                           )}
                           
                           {/* Project Category Badge */}
-                          <div className="absolute top-4 left-4 z-20">
+                          <div className="absolute top-4 left-4 z-20 flex gap-2">
                             <span className="px-3 py-1 bg-primary-600 text-white text-sm font-medium rounded-full shadow-lg">
                               {project.category}
                             </span>
+                            {!videoPlaying && (
+                              <span className="px-2 py-1 bg-accent-500 text-white text-xs font-medium rounded-full shadow-lg animate-pulse">
+                                Auto 2x
+                              </span>
+                            )}
                           </div>
                         </div>
                       </div>
