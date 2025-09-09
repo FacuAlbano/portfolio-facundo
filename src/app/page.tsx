@@ -393,20 +393,30 @@ export default function Home() {
     setShowContactModal(false);
   };
 
-  // Download CV handler
+  // Download CV + Cover Letter handler
   const downloadCV = () => {
-    const cvPath = language === 'es' 
-      ? '/documents/CV_Facundo_Albano.pdf'
-      : '/documents/Facundo_Albano_Software_Developer_Resume.pdf';
-    
-    const link = document.createElement('a');
-    link.href = cvPath;
-    link.download = language === 'es' 
-      ? 'CV_Facundo_Albano.pdf'
-      : 'Facundo_Albano_Software_Developer_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Definir archivos según idioma
+    const files = language === 'es' 
+      ? [
+          { path: '/documents/CV_Facundo_Albano.pdf', name: 'CV_Facundo_Albano.pdf' },
+          { path: '/documents/Carta de presentacion  Porfolio.docx', name: 'Carta_Presentacion_Facundo_Albano.docx' }
+        ]
+      : [
+          { path: '/documents/Facundo_Albano_Software_Developer_Resume.pdf', name: 'Facundo_Albano_Software_Developer_Resume.pdf' },
+          { path: '/documents/Facundo_Albano_Junior_Web_Developer_Cover_Letter.docx', name: 'Facundo_Albano_Cover_Letter.docx' }
+        ];
+
+    // Descargar cada archivo con un pequeño delay
+    files.forEach((file, index) => {
+      setTimeout(() => {
+        const link = document.createElement('a');
+        link.href = file.path;
+        link.download = file.name;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, index * 500); // 500ms de delay entre descargas
+    });
   };
 
   // Animation variants
@@ -568,7 +578,7 @@ export default function Home() {
                     className="px-8 py-4 border-2 border-primary-600 text-primary-600 dark:border-primary-400 dark:text-primary-400 rounded-xl font-semibold hover:bg-primary-600 hover:text-white dark:hover:bg-primary-400 dark:hover:text-slate-900 transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Download className="w-5 h-5" />
-                    CV
+                    {language === 'es' ? 'CV + Carta' : 'CV + Cover Letter'}
                   </button>
                 </motion.div>
                 
