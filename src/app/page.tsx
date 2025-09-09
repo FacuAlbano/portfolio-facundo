@@ -36,6 +36,8 @@ export default function Home() {
   const [language, setLanguage] = useState('es');
   const [darkMode, setDarkMode] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState<string | null>(null);
+  const [videoPaused, setVideoPaused] = useState<{[key: string]: boolean}>({});
+  const [showVideoControls, setShowVideoControls] = useState<{[key: string]: boolean}>({});
   const [showContactModal, setShowContactModal] = useState(false);
   const [isClient, setIsClient] = useState(false);
   
@@ -370,6 +372,36 @@ export default function Home() {
       setVideoPlaying(null);
     } else {
       setVideoPlaying(videoId);
+    }
+  };
+
+  // Toggle video play/pause
+  const togglePlayPause = (projectName: string) => {
+    const video = document.querySelector(`video[data-project="${projectName}"]`) as HTMLVideoElement;
+    if (video) {
+      if (video.paused) {
+        video.play();
+        setVideoPaused(prev => ({ ...prev, [projectName]: false }));
+        setShowVideoControls(prev => ({ ...prev, [projectName]: true }));
+        // Hide controls after 3 seconds
+        setTimeout(() => {
+          setShowVideoControls(prev => ({ ...prev, [projectName]: false }));
+        }, 3000);
+      } else {
+        video.pause();
+        setVideoPaused(prev => ({ ...prev, [projectName]: true }));
+        setShowVideoControls(prev => ({ ...prev, [projectName]: true }));
+      }
+    }
+  };
+
+  // Show video controls temporarily
+  const showControlsTemporarily = (projectName: string) => {
+    setShowVideoControls(prev => ({ ...prev, [projectName]: true }));
+    if (!videoPaused[projectName]) {
+      setTimeout(() => {
+        setShowVideoControls(prev => ({ ...prev, [projectName]: false }));
+      }, 3000);
     }
   };
 
@@ -859,7 +891,11 @@ export default function Home() {
                         <div className="aspect-video relative overflow-hidden">
                           {videoPlaying === project.name && isClient ? (
                             /* Video Player */
-                            <div className="absolute inset-0">
+                            <div 
+                              className="absolute inset-0"
+                              onMouseMove={() => showControlsTemporarily(project.name)}
+                              onClick={() => showControlsTemporarily(project.name)}
+                            >
                               <video
                                 className="w-full h-full object-cover"
                                 controls
@@ -870,6 +906,18 @@ export default function Home() {
                                     video.currentTime = 0; // Restart from beginning
                                     video.play(); // Auto restart
                                   }
+                                }}
+                                onPlay={() => {
+                                  setVideoPaused(prev => ({ ...prev, [project.name]: false }));
+                                  setShowVideoControls(prev => ({ ...prev, [project.name]: true }));
+                                  // Hide controls after 3 seconds
+                                  setTimeout(() => {
+                                    setShowVideoControls(prev => ({ ...prev, [project.name]: false }));
+                                  }, 3000);
+                                }}
+                                onPause={() => {
+                                  setVideoPaused(prev => ({ ...prev, [project.name]: true }));
+                                  setShowVideoControls(prev => ({ ...prev, [project.name]: true }));
                                 }}
                                 onLoadedData={(e) => {
                                   const video = e.target as HTMLVideoElement;
@@ -899,6 +947,29 @@ export default function Home() {
                                   <X className="w-5 h-5" />
                                 </button>
                               </div>
+
+                              {/* Play/Pause Button Overlay */}
+                              <motion.div 
+                                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                                initial={{ opacity: 1 }}
+                                animate={{ 
+                                  opacity: videoPaused[project.name] || showVideoControls[project.name] ? 1 : 0 
+                                }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                <motion.button
+                                  whileHover={{ scale: 1.1 }}
+                                  whileTap={{ scale: 0.95 }}
+                                  onClick={() => togglePlayPause(project.name)}
+                                  className="w-20 h-20 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 backdrop-blur-sm pointer-events-auto"
+                                >
+                                  {videoPaused[project.name] ? (
+                                    <Play className="w-8 h-8 ml-1" />
+                                  ) : (
+                                    <Pause className="w-8 h-8" />
+                                  )}
+                                </motion.button>
+                              </motion.div>
                             </div>
                           ) : (
                             /* Video Thumbnail/Preview */
@@ -933,25 +1004,25 @@ export default function Home() {
                                 <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 animate-pulse" />
                               )}
                               
-                              {/* Play Overlay */}
-                              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/30 to-accent-500/30 flex items-center justify-center">
-                                <div className="text-center">
-                                  <motion.button
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    onClick={() => toggleVideo(project.name)}
-                                    className="w-20 h-20 bg-white/95 dark:bg-slate-800/95 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 mb-4 backdrop-blur-sm"
-                                  >
-                                    <Play className="w-8 h-8 text-primary-600 ml-1" />
-                                  </motion.button>
-                                  <p className="text-white font-semibold text-lg drop-shadow-lg">
-                                    {language === 'es' ? 'Ver Demo Completo' : 'Watch Full Demo'}
-                                  </p>
-                                  <p className="text-white/80 text-sm mt-1">
-                                    {language === 'es' ? 'Click para ver a tamaño completo (2x)' : 'Click for full size (2x speed)'}
-                                  </p>
-                                </div>
-                              </div>
+                                    {/* Play/Pause Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-primary-500/30 to-accent-500/30 flex items-center justify-center">
+                                      <div className="text-center">
+                                        <motion.button
+                                          whileHover={{ scale: 1.1 }}
+                                          whileTap={{ scale: 0.95 }}
+                                          onClick={() => toggleVideo(project.name)}
+                                          className="w-20 h-20 bg-white/95 dark:bg-slate-800/95 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 mb-4 backdrop-blur-sm"
+                                        >
+                                          <Play className="w-8 h-8 text-primary-600 ml-1" />
+                                        </motion.button>
+                                        <p className="text-white font-semibold text-lg drop-shadow-lg">
+                                          {language === 'es' ? 'Ver Demo Completo' : 'Watch Full Demo'}
+                                        </p>
+                                        <p className="text-white/80 text-sm mt-1">
+                                          {language === 'es' ? 'Click para ver a tamaño completo (2x)' : 'Click for full size (2x speed)'}
+                                        </p>
+                                      </div>
+                                    </div>
                             </div>
                           )}
                           
