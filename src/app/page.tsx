@@ -844,29 +844,69 @@ export default function Home() {
                       {/* Video/Image Preview */}
                       <div className={`relative bg-slate-100 dark:bg-slate-700 ${index % 2 === 0 ? 'order-1' : 'lg:order-2'}`}>
                         <div className="aspect-video relative overflow-hidden">
-                          {/* Video Preview */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center">
-                            <div className="text-center">
-                              <motion.button
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => toggleVideo(project.name)}
-                                className="w-20 h-20 bg-white/90 dark:bg-slate-800/90 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 mb-4"
+                          {videoPlaying === project.name ? (
+                            /* Video Player */
+                            <div className="absolute inset-0">
+                              <video
+                                className="w-full h-full object-cover"
+                                controls
+                                autoPlay
+                                onEnded={() => setVideoPlaying(null)}
+                                onPause={() => setVideoPlaying(null)}
                               >
-                                {videoPlaying === project.name ? (
-                                  <Pause className="w-8 h-8 text-primary-600" />
-                                ) : (
-                                  <Play className="w-8 h-8 text-primary-600 ml-1" />
-                                )}
-                              </motion.button>
-                              <p className="text-slate-600 dark:text-slate-300 font-medium">
-                                {videoPlaying === project.name ? 'Pausar Demo' : 'Ver Demo'}
-                              </p>
+                                <source src={project.video} type="video/mp4" />
+                                Tu navegador no soporta videos HTML5.
+                              </video>
+                              
+                              {/* Close Video Button */}
+                              <button
+                                onClick={() => setVideoPlaying(null)}
+                                className="absolute top-4 right-4 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-200 z-10"
+                              >
+                                <X className="w-5 h-5" />
+                              </button>
                             </div>
-                          </div>
+                          ) : (
+                            /* Video Thumbnail/Preview */
+                            <div className="absolute inset-0">
+                              {/* Background Video Preview (muted) */}
+                              <video
+                                className="w-full h-full object-cover opacity-30"
+                                muted
+                                loop
+                                playsInline
+                                onLoadedData={(e) => {
+                                  const video = e.target as HTMLVideoElement;
+                                  video.currentTime = 10; // Start at 10 seconds for better preview
+                                }}
+                              >
+                                <source src={project.video} type="video/mp4" />
+                              </video>
+                              
+                              {/* Play Overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/30 to-accent-500/30 flex items-center justify-center">
+                                <div className="text-center">
+                                  <motion.button
+                                    whileHover={{ scale: 1.1 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={() => toggleVideo(project.name)}
+                                    className="w-20 h-20 bg-white/95 dark:bg-slate-800/95 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 mb-4 backdrop-blur-sm"
+                                  >
+                                    <Play className="w-8 h-8 text-primary-600 ml-1" />
+                                  </motion.button>
+                                  <p className="text-white font-semibold text-lg drop-shadow-lg">
+                                    {language === 'es' ? 'Ver Demo' : 'Watch Demo'}
+                                  </p>
+                                  <p className="text-white/80 text-sm mt-1">
+                                    {language === 'es' ? 'Click para reproducir' : 'Click to play'}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          )}
                           
                           {/* Project Category Badge */}
-                          <div className="absolute top-4 left-4">
+                          <div className="absolute top-4 left-4 z-20">
                             <span className="px-3 py-1 bg-primary-600 text-white text-sm font-medium rounded-full shadow-lg">
                               {project.category}
                             </span>
