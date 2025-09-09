@@ -37,6 +37,7 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState<string | null>(null);
   const [showContactModal, setShowContactModal] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   
   // Scroll parallax effects
   const { scrollYProgress } = useScroll();
@@ -45,6 +46,7 @@ export default function Home() {
 
   // Detectar preferencia del sistema y aplicar modo oscuro
   useEffect(() => {
+    setIsClient(true);
     const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setDarkMode(isDark);
     
@@ -137,7 +139,7 @@ export default function Home() {
             name: "Portfolio Personal",
             description: "Este mismo portfolio que estás viendo ahora. Desarrollado con las tecnologías más modernas para demostrar mis habilidades en desarrollo frontend avanzado y diseño de experiencia de usuario.",
             tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "React Hooks"],
-            link: typeof window !== 'undefined' ? window.location.href : 'https://github.com/FacuAlbano/portfolio-facundo',
+            link: 'https://github.com/FacuAlbano/portfolio-facundo',
             status: "Proyecto Actual - En Desarrollo",
             github: "https://github.com/FacuAlbano/portfolio-facundo",
             video: "/videos/portfolio-demo.mp4", // Placeholder para tu video futuro
@@ -282,7 +284,7 @@ export default function Home() {
             name: "Personal Portfolio",
             description: "This very portfolio you're viewing now. Developed with the most modern technologies to demonstrate my skills in advanced frontend development and user experience design.",
             tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "React Hooks"],
-            link: typeof window !== 'undefined' ? window.location.href : 'https://github.com/FacuAlbano/portfolio-facundo',
+            link: 'https://github.com/FacuAlbano/portfolio-facundo',
             status: "Current Project - In Development",
             github: "https://github.com/FacuAlbano/portfolio-facundo",
             video: "/videos/portfolio-demo.mp4",
@@ -844,7 +846,7 @@ export default function Home() {
                       {/* Video/Image Preview */}
                       <div className={`relative bg-slate-100 dark:bg-slate-700 ${index % 2 === 0 ? 'order-1' : 'lg:order-2'}`}>
                         <div className="aspect-video relative overflow-hidden">
-                          {videoPlaying === project.name ? (
+                          {videoPlaying === project.name && isClient ? (
                             /* Video Player */
                             <div className="absolute inset-0">
                               <video
@@ -885,24 +887,29 @@ export default function Home() {
                             /* Video Thumbnail/Preview */
                             <div className="absolute inset-0">
                               {/* Background Video Preview (muted) */}
-                              <video
-                                className="w-full h-full object-cover opacity-40"
-                                muted
-                                loop
-                                autoPlay
-                                playsInline
-                                onLoadedData={(e) => {
-                                  const video = e.target as HTMLVideoElement;
-                                  video.playbackRate = 2.0; // Velocidad x2
-                                  video.currentTime = 10; // Start at 10 seconds for better preview
-                                }}
-                                onCanPlay={(e) => {
-                                  const video = e.target as HTMLVideoElement;
-                                  video.playbackRate = 2.0; // Asegurar velocidad x2
-                                }}
-                              >
-                                <source src={project.video} type="video/mp4" />
-                              </video>
+                              {isClient ? (
+                                <video
+                                  className="w-full h-full object-cover opacity-40"
+                                  muted
+                                  loop
+                                  autoPlay
+                                  playsInline
+                                  onLoadedData={(e) => {
+                                    const video = e.target as HTMLVideoElement;
+                                    video.playbackRate = 2.0; // Velocidad x2
+                                    video.currentTime = 10; // Start at 10 seconds for better preview
+                                  }}
+                                  onCanPlay={(e) => {
+                                    const video = e.target as HTMLVideoElement;
+                                    video.playbackRate = 2.0; // Asegurar velocidad x2
+                                  }}
+                                >
+                                  <source src={project.video} type="video/mp4" />
+                                </video>
+                              ) : (
+                                /* Loading placeholder */
+                                <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 animate-pulse" />
+                              )}
                               
                               {/* Play Overlay */}
                               <div className="absolute inset-0 bg-gradient-to-br from-primary-500/30 to-accent-500/30 flex items-center justify-center">
