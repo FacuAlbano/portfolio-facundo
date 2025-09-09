@@ -1,17 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Configuración para export estático (GitHub Pages)
-  output: 'export',
-  trailingSlash: true,
-  basePath: '/portfolio-facundo',
-  assetPrefix: '/portfolio-facundo/',
+  // Configuración para desarrollo local
+  reactStrictMode: true,
+  
+  // Solucionar warning de workspace root
+  outputFileTracingRoot: __dirname,
+  
+  // Configuración de imágenes
   images: {
-    unoptimized: true,
+    domains: [],
   },
   
-  // Configuración de react strict mode
-  reactStrictMode: true,
+  // Configuración experimental
+  experimental: {
+    // Habilitar características experimentales si es necesario
+  },
 };
 
 export default nextConfig;
