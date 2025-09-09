@@ -24,13 +24,19 @@ import {
   Star,
   Award,
   ChevronDown,
-  Download
+  Download,
+  Phone,
+  MessageCircle,
+  X,
+  Copy,
+  Check
 } from 'lucide-react';
 
 export default function Home() {
   const [language, setLanguage] = useState('es');
   const [darkMode, setDarkMode] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState<string | null>(null);
+  const [showContactModal, setShowContactModal] = useState(false);
   
   // Scroll parallax effects
   const { scrollYProgress } = useScroll();
@@ -164,6 +170,44 @@ export default function Home() {
           }
         ]
       },
+      experience: {
+        title: "Experiencia Profesional",
+        subtitle: "9 años en administración que me aportan una perspectiva única al desarrollo",
+        intro: "Mi extensa experiencia en el rubro administrativo me ha proporcionado habilidades transferibles valiosas que potencian mi trabajo como desarrollador:",
+        skills: [
+          {
+            title: "Gestión de Proyectos",
+            description: "Coordinación de múltiples tareas y deadlines, metodologías de trabajo eficientes",
+            icon: "📊"
+          },
+          {
+            title: "Atención al Detalle",
+            description: "Precisión en documentación y procesos, esencial para código limpio y libre de errores",
+            icon: "🔍"
+          },
+          {
+            title: "Comunicación Efectiva",
+            description: "Experiencia trabajando con diferentes stakeholders y traduciendo requerimientos técnicos",
+            icon: "💬"
+          },
+          {
+            title: "Resolución de Problemas",
+            description: "Análisis crítico y pensamiento sistemático para encontrar soluciones eficientes",
+            icon: "🎯"
+          },
+          {
+            title: "Trabajo en Equipo",
+            description: "Colaboración efectiva en equipos multidisciplinarios y liderazgo de procesos",
+            icon: "🤝"
+          },
+          {
+            title: "Orientación a Resultados",
+            description: "Enfoque en objetivos medibles y mejora continua de procesos",
+            icon: "📈"
+          }
+        ],
+        transition: "Esta combinación única de experiencia administrativa y pasión por la tecnología me permite aportar una perspectiva integral a cualquier equipo de desarrollo."
+      },
       contact: {
         title: "¿Listo para Colaborar?",
         subtitle: "Busco oportunidades para aplicar mis habilidades en proyectos desafiantes y crecer profesionalmente en un entorno dinámico."
@@ -271,6 +315,44 @@ export default function Home() {
           }
         ]
       },
+      experience: {
+        title: "Professional Experience",
+        subtitle: "9 years in administration providing a unique perspective to development",
+        intro: "My extensive experience in administration has provided me with valuable transferable skills that enhance my work as a developer:",
+        skills: [
+          {
+            title: "Project Management",
+            description: "Coordination of multiple tasks and deadlines, efficient work methodologies",
+            icon: "📊"
+          },
+          {
+            title: "Attention to Detail",
+            description: "Precision in documentation and processes, essential for clean and error-free code",
+            icon: "🔍"
+          },
+          {
+            title: "Effective Communication",
+            description: "Experience working with different stakeholders and translating technical requirements",
+            icon: "💬"
+          },
+          {
+            title: "Problem Solving",
+            description: "Critical analysis and systematic thinking to find efficient solutions",
+            icon: "🎯"
+          },
+          {
+            title: "Teamwork",
+            description: "Effective collaboration in multidisciplinary teams and process leadership",
+            icon: "🤝"
+          },
+          {
+            title: "Results Oriented",
+            description: "Focus on measurable objectives and continuous process improvement",
+            icon: "📈"
+          }
+        ],
+        transition: "This unique combination of administrative experience and passion for technology allows me to bring a comprehensive perspective to any development team."
+      },
       contact: {
         title: "Ready to Collaborate?",
         subtitle: "I'm seeking opportunities to apply my skills in challenging projects and grow professionally in a dynamic environment."
@@ -287,6 +369,44 @@ export default function Home() {
     } else {
       setVideoPlaying(videoId);
     }
+  };
+
+  // Contact handlers
+  const handleContact = (type: string) => {
+    switch (type) {
+      case 'phone':
+        window.open('tel:+543413319513', '_self');
+        break;
+      case 'whatsapp':
+        window.open('https://wa.me/543413319513?text=Hola%20Facundo,%20vi%20tu%20portfolio%20y%20me%20interesa%20contactarte', '_blank');
+        break;
+      case 'email':
+        window.open('mailto:albano.facundo@hotmail.com?subject=Contacto%20desde%20Portfolio&body=Hola%20Facundo,%20vi%20tu%20portfolio%20y%20me%20interesa%20contactarte.', '_blank');
+        break;
+      case 'linkedin':
+        window.open('https://www.linkedin.com/in/facundo-albano-5b0495337', '_blank');
+        break;
+      case 'github':
+        window.open('https://github.com/FacuAlbano', '_blank');
+        break;
+    }
+    setShowContactModal(false);
+  };
+
+  // Download CV handler
+  const downloadCV = () => {
+    const cvPath = language === 'es' 
+      ? '/documents/CV_Facundo_Albano.pdf'
+      : '/documents/Facundo_Albano_Software_Developer_Resume.pdf';
+    
+    const link = document.createElement('a');
+    link.href = cvPath;
+    link.download = language === 'es' 
+      ? 'CV_Facundo_Albano.pdf'
+      : 'Facundo_Albano_Software_Developer_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   // Animation variants
@@ -436,11 +556,17 @@ export default function Home() {
                   transition={{ delay: 1, duration: 0.6 }}
                   className="flex flex-col sm:flex-row gap-4"
                 >
-                  <button className="group px-8 py-4 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+                  <button 
+                    onClick={() => setShowContactModal(true)}
+                    className="group px-8 py-4 bg-gradient-to-r from-primary-600 to-accent-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
                     <Mail className="w-5 h-5 group-hover:animate-icon-bounce" />
                     Contactar
                   </button>
-                  <button className="px-8 py-4 border-2 border-primary-600 text-primary-600 dark:border-primary-400 dark:text-primary-400 rounded-xl font-semibold hover:bg-primary-600 hover:text-white dark:hover:bg-primary-400 dark:hover:text-slate-900 transition-all duration-300 flex items-center justify-center gap-2">
+                  <button 
+                    onClick={downloadCV}
+                    className="px-8 py-4 border-2 border-primary-600 text-primary-600 dark:border-primary-400 dark:text-primary-400 rounded-xl font-semibold hover:bg-primary-600 hover:text-white dark:hover:bg-primary-400 dark:hover:text-slate-900 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
                     <Download className="w-5 h-5" />
                     CV
                   </button>
@@ -873,6 +999,82 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Experiencia Profesional */}
+        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-accent-50 to-primary-50 dark:from-accent-900/20 dark:to-primary-900/20">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="inline-block p-3 bg-accent-100 dark:bg-accent-900/30 rounded-2xl mb-6"
+              >
+                <Briefcase className="w-8 h-8 text-accent-600 dark:text-accent-400" />
+              </motion.div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+                {currentContent.experience.title}
+              </h2>
+              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mb-8">
+                {currentContent.experience.subtitle}
+              </p>
+              <p className="text-lg text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed">
+                {currentContent.experience.intro}
+              </p>
+            </motion.div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+              {currentContent.experience.skills.map((skill, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="group relative"
+                >
+                  <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-200 dark:border-slate-700 h-full">
+                    <div className="text-center mb-4">
+                      <div className="text-4xl mb-3">{skill.icon}</div>
+                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">
+                        {skill.title}
+                      </h3>
+                    </div>
+                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-center">
+                      {skill.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 max-w-4xl mx-auto">
+                <div className="flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-accent-500 to-primary-500 rounded-xl flex items-center justify-center">
+                    <Star className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                  {currentContent.experience.transition}
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Contacto */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800 transition-colors duration-300">
           <div className="max-w-7xl mx-auto text-center">
@@ -1012,6 +1214,115 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Contact Modal */}
+      {showContactModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="bg-white dark:bg-slate-800 rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl border border-slate-200 dark:border-slate-700"
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                {language === 'es' ? '¡Conecta conmigo!' : 'Get in touch!'}
+              </h3>
+              <button
+                onClick={() => setShowContactModal(false)}
+                className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors duration-200"
+              >
+                <X className="w-5 h-5 text-slate-500" />
+              </button>
+            </div>
+
+            <p className="text-slate-600 dark:text-slate-300 mb-6">
+              {language === 'es' 
+                ? 'Elige la forma que prefieras para contactarme:' 
+                : 'Choose your preferred way to contact me:'}
+            </p>
+
+            <div className="space-y-3">
+              {/* WhatsApp */}
+              <button
+                onClick={() => handleContact('whatsapp')}
+                className="w-full flex items-center gap-4 p-4 bg-green-50 dark:bg-green-900/20 hover:bg-green-100 dark:hover:bg-green-900/30 rounded-xl transition-colors duration-200 group"
+              >
+                <div className="p-2 bg-green-500 rounded-lg">
+                  <MessageCircle className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 text-left">
+                  <div className="font-semibold text-slate-900 dark:text-white">WhatsApp</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">+54 341 331-9513</div>
+                </div>
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-green-600" />
+              </button>
+
+              {/* Phone */}
+              <button
+                onClick={() => handleContact('phone')}
+                className="w-full flex items-center gap-4 p-4 bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded-xl transition-colors duration-200 group"
+              >
+                <div className="p-2 bg-blue-500 rounded-lg">
+                  <Phone className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 text-left">
+                  <div className="font-semibold text-slate-900 dark:text-white">
+                    {language === 'es' ? 'Teléfono' : 'Phone'}
+                  </div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">+54 341 331-9513</div>
+                </div>
+                <Phone className="w-4 h-4 text-slate-400 group-hover:text-blue-600" />
+              </button>
+
+              {/* Email */}
+              <button
+                onClick={() => handleContact('email')}
+                className="w-full flex items-center gap-4 p-4 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-xl transition-colors duration-200 group"
+              >
+                <div className="p-2 bg-red-500 rounded-lg">
+                  <Mail className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 text-left">
+                  <div className="font-semibold text-slate-900 dark:text-white">Email</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">albano.facundo@hotmail.com</div>
+                </div>
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-red-600" />
+              </button>
+
+              {/* LinkedIn */}
+              <button
+                onClick={() => handleContact('linkedin')}
+                className="w-full flex items-center gap-4 p-4 bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/30 rounded-xl transition-colors duration-200 group"
+              >
+                <div className="p-2 bg-primary-600 rounded-lg">
+                  <Linkedin className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 text-left">
+                  <div className="font-semibold text-slate-900 dark:text-white">LinkedIn</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">Facundo Albano</div>
+                </div>
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-primary-600" />
+              </button>
+
+              {/* GitHub */}
+              <button
+                onClick={() => handleContact('github')}
+                className="w-full flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 rounded-xl transition-colors duration-200 group"
+              >
+                <div className="p-2 bg-slate-800 dark:bg-slate-600 rounded-lg">
+                  <Github className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 text-left">
+                  <div className="font-semibold text-slate-900 dark:text-white">GitHub</div>
+                  <div className="text-sm text-slate-600 dark:text-slate-300">@FacuAlbano</div>
+                </div>
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-300" />
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }
