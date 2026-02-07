@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   Mail, 
@@ -29,7 +29,10 @@ import {
   MessageCircle,
   X,
   Copy,
-  Check
+  Check,
+  Volume2,
+  VolumeX,
+  Maximize
 } from 'lucide-react';
 
 export default function Home() {
@@ -37,9 +40,17 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState<string | null>(null);
   const [videoPaused, setVideoPaused] = useState<{[key: string]: boolean}>({});
-  const [showVideoControls, setShowVideoControls] = useState<{[key: string]: boolean}>({});
+  const [videoHoverPreview, setVideoHoverPreview] = useState<string | null>(null); // YouTube-style: mini preview on hover
+  const [videoHovering, setVideoHovering] = useState<string | null>(null); // controles visibles cuando el mouse está sobre el video
+  const [videoProgress, setVideoProgress] = useState<{[key: string]: { currentTime: number; duration: number }}>({});
+  const [videoVolume, setVideoVolume] = useState(1);
+  const [videoMuted, setVideoMuted] = useState(false);
+  const videoContainerRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [showContactModal, setShowContactModal] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  
+  // Prefijo para imágenes (necesario en GitHub Pages con basePath)
+  const imageBase = process.env.NEXT_PUBLIC_BASE_PATH || '';
   
   // Scroll parallax effects
   const { scrollYProgress } = useScroll();
@@ -75,7 +86,7 @@ export default function Home() {
     es: {
       hero: {
         title: "Facundo Ernesto Albano",
-        subtitle: "Desarrollador Full Stack & Arquitecto de Soluciones Digitales",
+        subtitle: "Desarrollador Full Stack",
         description: "Transformo ideas en aplicaciones robustas y escalables. Especializado en tecnologías modernas con enfoque en experiencia de usuario excepcional y código de calidad empresarial."
       },
       about: {
@@ -84,8 +95,8 @@ export default function Home() {
         details: [
           { icon: Calendar, text: "29 años de edad - Nacido el 14 de Agosto de 1996" },
           { icon: MapPin, text: "Rosario, Santa Fe, Argentina - Disponible para trabajo remoto" },
-          { icon: GraduationCap, text: "Técnico en Desarrollo de Software - URQUIZA (4 materias pendientes)" },
-          { icon: Briefcase, text: "Enfoque en desarrollo web empresarial y aplicaciones escalables" }
+          { icon: GraduationCap, text: "Técnico en Desarrollo de Software - URQUIZA" },
+          { icon: Briefcase, text: "Enfoque en desarrollo web y aplicaciones escalables" }
         ]
       },
       skills: {
@@ -93,7 +104,7 @@ export default function Home() {
         categories: [
           {
             name: "Frontend Development",
-            skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript ES6+"]
+            skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"]
           },
           {
             name: "Backend Development",
@@ -121,7 +132,7 @@ export default function Home() {
             link: null,
             github: "https://github.com/FacuAlbano/TransitoRosario",
             video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/trro-demo.mp4",
-            image: "/images/trro-preview.jpg",
+            image: "/images/image-trro.png",
             features: ["Gestión de usuarios", "Dashboard analítico", "Sistema de reportes", "API RESTful"],
             category: "Full Stack"
           },
@@ -133,7 +144,7 @@ export default function Home() {
             status: "En Producción - Sitio Corporativo",
             github: "https://github.com/FacuAlbano/alterna-servicios-electricos",
             video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/alterna-demo.mp4",
-            image: "/images/alterna-preview.jpg",
+            image: "/images/image-alterna.png",
             features: ["Diseño responsive", "Optimización SEO", "Formularios contacto", "Galería de servicios"],
             category: "Frontend"
           },
@@ -145,7 +156,7 @@ export default function Home() {
             status: "Proyecto Actual - En Desarrollo",
             github: "https://github.com/FacuAlbano/portfolio-facundo",
             video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/portfolio-demo.mp4",
-            image: "/images/portfolio-preview.jpg",
+            image: "/images/image-porfolio.png",
             features: ["Animaciones fluidas", "Modo oscuro", "Multiidioma", "Diseño responsive"],
             category: "Frontend"
           }
@@ -266,7 +277,7 @@ export default function Home() {
             link: null,
             github: "https://github.com/FacuAlbano/TransitoRosario",
             video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/trro-demo.mp4",
-            image: "/images/trro-preview.jpg",
+            image: "/images/image-trro.png",
             features: ["User management", "Analytics dashboard", "Report system", "RESTful API"],
             category: "Full Stack"
           },
@@ -278,7 +289,7 @@ export default function Home() {
             status: "In Production - Corporate Website",
             github: "https://github.com/FacuAlbano/alterna-servicios-electricos",
             video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/alterna-demo.mp4",
-            image: "/images/alterna-preview.jpg",
+            image: "/images/image-alterna.png",
             features: ["Responsive design", "SEO optimization", "Contact forms", "Service gallery"],
             category: "Frontend"
           },
@@ -290,7 +301,7 @@ export default function Home() {
             status: "Current Project - In Development",
             github: "https://github.com/FacuAlbano/portfolio-facundo",
             video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/portfolio-demo.mp4",
-            image: "/images/portfolio-preview.jpg",
+            image: "/images/image-porfolio.png",
             features: ["Smooth animations", "Dark mode", "Multi-language", "Responsive design"],
             category: "Frontend"
           }
@@ -369,9 +380,12 @@ export default function Home() {
   // Video player handler
   const toggleVideo = (videoId: string) => {
     if (videoPlaying === videoId) {
+      if (document.fullscreenElement) document.exitFullscreen?.();
       setVideoPlaying(null);
+      setVideoHovering(null);
     } else {
       setVideoPlaying(videoId);
+      setVideoHovering(videoId); // mostrar controles al abrir (el cursor ya puede estar sobre el área)
     }
   };
 
@@ -382,26 +396,55 @@ export default function Home() {
       if (video.paused) {
         video.play();
         setVideoPaused(prev => ({ ...prev, [projectName]: false }));
-        setShowVideoControls(prev => ({ ...prev, [projectName]: true }));
-        // Hide controls after 3 seconds
-        setTimeout(() => {
-          setShowVideoControls(prev => ({ ...prev, [projectName]: false }));
-        }, 3000);
       } else {
         video.pause();
         setVideoPaused(prev => ({ ...prev, [projectName]: true }));
-        setShowVideoControls(prev => ({ ...prev, [projectName]: true }));
       }
     }
   };
 
-  // Show video controls temporarily
-  const showControlsTemporarily = (projectName: string) => {
-    setShowVideoControls(prev => ({ ...prev, [projectName]: true }));
-    if (!videoPaused[projectName]) {
-      setTimeout(() => {
-        setShowVideoControls(prev => ({ ...prev, [projectName]: false }));
-      }, 3000);
+  const formatTime = (seconds: number) => {
+    if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  };
+
+  const handleVideoSeek = (projectName: string, value: number) => {
+    const video = document.querySelector(`video[data-project="${projectName}"]`) as HTMLVideoElement;
+    if (video && Number.isFinite(video.duration)) {
+      video.currentTime = value;
+      setVideoProgress(prev => ({ ...prev, [projectName]: { currentTime: value, duration: video.duration } }));
+    }
+  };
+
+  const handleVolumeChange = (projectName: string, newVolume: number) => {
+    const video = document.querySelector(`video[data-project="${projectName}"]`) as HTMLVideoElement;
+    if (video) {
+      const v = Math.max(0, Math.min(1, newVolume));
+      video.volume = v;
+      video.muted = v === 0;
+      setVideoVolume(v);
+      setVideoMuted(v === 0);
+    }
+  };
+
+  const toggleMute = (projectName: string) => {
+    const video = document.querySelector(`video[data-project="${projectName}"]`) as HTMLVideoElement;
+    if (video) {
+      video.muted = !video.muted;
+      setVideoMuted(video.muted);
+      if (!video.muted) setVideoVolume(video.volume);
+    }
+  };
+
+  const toggleFullscreen = (projectName: string) => {
+    const container = videoContainerRefs.current[projectName];
+    if (!container) return;
+    if (!document.fullscreenElement) {
+      container.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
     }
   };
 
@@ -884,21 +927,21 @@ export default function Home() {
                   className="group relative"
                 >
                   <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200 dark:border-slate-700">
-                    <div className={`grid ${index % 2 === 0 ? 'lg:grid-cols-2' : 'lg:grid-cols-2'} gap-0`}>
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-0 items-stretch">
                       
-                      {/* Video/Image Preview */}
-                      <div className={`relative bg-slate-100 dark:bg-slate-700 ${index % 2 === 0 ? 'order-1' : 'lg:order-2'}`}>
-                        <div className="aspect-video relative overflow-hidden">
+                      {/* Video/Image Preview - misma altura que la columna de contenido */}
+                      <div className={`relative bg-slate-100 dark:bg-slate-700 min-w-0 flex flex-col ${index % 2 === 0 ? 'order-1' : 'lg:order-2'}`}>
+                        <div className="aspect-video lg:aspect-auto lg:min-h-0 lg:flex-1 relative overflow-hidden">
                           {videoPlaying === project.name && isClient ? (
                             /* Video Player */
                             <div 
+                              ref={(el) => { videoContainerRefs.current[project.name] = el; }}
                               className="absolute inset-0"
-                              onMouseMove={() => showControlsTemporarily(project.name)}
-                              onClick={() => showControlsTemporarily(project.name)}
+                              onMouseEnter={() => setVideoHovering(project.name)}
+                              onMouseLeave={() => setVideoHovering(null)}
                             >
                               <video
                                 className="w-full h-full object-cover"
-                                controls
                                 autoPlay
                                 onEnded={() => {
                                   const video = document.querySelector(`video[data-project="${project.name}"]`) as HTMLVideoElement;
@@ -907,21 +950,22 @@ export default function Home() {
                                     video.play(); // Auto restart
                                   }
                                 }}
-                                onPlay={() => {
-                                  setVideoPaused(prev => ({ ...prev, [project.name]: false }));
-                                  setShowVideoControls(prev => ({ ...prev, [project.name]: true }));
-                                  // Hide controls after 3 seconds
-                                  setTimeout(() => {
-                                    setShowVideoControls(prev => ({ ...prev, [project.name]: false }));
-                                  }, 3000);
+                                onPlay={() => setVideoPaused(prev => ({ ...prev, [project.name]: false }))}
+                                onPause={() => setVideoPaused(prev => ({ ...prev, [project.name]: true }))}
+                                onTimeUpdate={(e) => {
+                                  const v = e.currentTarget;
+                                  setVideoProgress(prev => ({ ...prev, [project.name]: { currentTime: v.currentTime, duration: v.duration } }));
                                 }}
-                                onPause={() => {
-                                  setVideoPaused(prev => ({ ...prev, [project.name]: true }));
-                                  setShowVideoControls(prev => ({ ...prev, [project.name]: true }));
+                                onLoadedMetadata={(e) => {
+                                  const v = e.currentTarget;
+                                  v.playbackRate = 2.0;
+                                  setVideoProgress(prev => ({ ...prev, [project.name]: { currentTime: v.currentTime, duration: v.duration } }));
                                 }}
                                 onLoadedData={(e) => {
                                   const video = e.target as HTMLVideoElement;
                                   video.playbackRate = 2.0; // Velocidad x2
+                                  video.volume = videoVolume;
+                                  video.muted = videoMuted;
                                 }}
                                 onCanPlay={(e) => {
                                   const video = e.target as HTMLVideoElement;
@@ -933,96 +977,171 @@ export default function Home() {
                                 Tu navegador no soporta videos HTML5.
                               </video>
                               
-                              {/* Video Controls Overlay */}
-                              <div className="absolute top-4 right-4 flex gap-2 z-10">
-                                {/* Speed Indicator */}
+                              {/* Controles del video: visibles al hacer mouse over, se ocultan al salir */}
+                              <motion.div
+                                className="absolute inset-0 flex items-center justify-center z-10"
+                                initial={{ opacity: 1 }}
+                                animate={{
+                                  opacity: videoPaused[project.name] || videoHovering === project.name ? 1 : 0,
+                                  pointerEvents: videoPaused[project.name] || videoHovering === project.name ? 'auto' : 'none',
+                                }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <motion.button
+                                  whileHover={{ scale: 1.1 }}
+                                  whileTap={{ scale: 0.95 }}
+                                  onClick={() => togglePlayPause(project.name)}
+                                  className="w-20 h-20 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 backdrop-blur-sm"
+                                >
+                                  {videoPaused[project.name] ? (
+                                    <Play className="w-8 h-8" />
+                                  ) : (
+                                    <Pause className="w-8 h-8" />
+                                  )}
+                                </motion.button>
+                              </motion.div>
+                              <motion.div
+                                className="absolute top-4 right-4 flex gap-2 z-10"
+                                initial={{ opacity: 1 }}
+                                animate={{
+                                  opacity: videoPaused[project.name] || videoHovering === project.name ? 1 : 0,
+                                  pointerEvents: videoPaused[project.name] || videoHovering === project.name ? 'auto' : 'none',
+                                }}
+                                transition={{ duration: 0.2 }}
+                              >
                                 <div className="px-2 py-1 bg-black/70 text-white text-xs font-medium rounded">
                                   2x
                                 </div>
-                                {/* Close Video Button */}
                                 <button
                                   onClick={() => setVideoPlaying(null)}
                                   className="w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-200"
                                 >
                                   <X className="w-5 h-5" />
                                 </button>
-                              </div>
-
-                              {/* Play/Pause Button Overlay */}
-                              <motion.div 
-                                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                              </motion.div>
+                              {/* Barra de controles inferior: tiempo, progreso, volumen, fullscreen */}
+                              <motion.div
+                                className="absolute bottom-0 left-0 right-0 z-10 flex items-center gap-3 px-3 py-2 bg-black/70 text-white"
                                 initial={{ opacity: 1 }}
-                                animate={{ 
-                                  opacity: videoPaused[project.name] || showVideoControls[project.name] ? 1 : 0 
+                                animate={{
+                                  opacity: videoPaused[project.name] || videoHovering === project.name ? 1 : 0,
+                                  pointerEvents: videoPaused[project.name] || videoHovering === project.name ? 'auto' : 'none',
                                 }}
-                                transition={{ duration: 0.3 }}
+                                transition={{ duration: 0.2 }}
                               >
-                                <motion.button
-                                  whileHover={{ scale: 1.1 }}
-                                  whileTap={{ scale: 0.95 }}
+                                <button
                                   onClick={() => togglePlayPause(project.name)}
-                                  className="w-20 h-20 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 backdrop-blur-sm pointer-events-auto"
+                                  className="p-1 rounded hover:bg-white/20 transition-colors"
+                                  aria-label={videoPaused[project.name] ? 'Play' : 'Pause'}
                                 >
-                                  {videoPaused[project.name] ? (
-                                    <Play className="w-8 h-8 ml-1" />
-                                  ) : (
-                                    <Pause className="w-8 h-8" />
-                                  )}
-                                </motion.button>
+                                  {videoPaused[project.name] ? <Play className="w-5 h-5" /> : <Pause className="w-5 h-5" />}
+                                </button>
+                                <span className="text-xs tabular-nums min-w-[4rem]">
+                                  {formatTime(videoProgress[project.name]?.currentTime ?? 0)} / {formatTime(videoProgress[project.name]?.duration ?? 0)}
+                                </span>
+                                <input
+                                  type="range"
+                                  min={0}
+                                  max={videoProgress[project.name]?.duration ?? 100}
+                                  step={0.1}
+                                  value={videoProgress[project.name]?.currentTime ?? 0}
+                                  onChange={(e) => handleVideoSeek(project.name, parseFloat(e.target.value))}
+                                  className="flex-1 h-1.5 accent-white/80 bg-white/30 rounded-full cursor-pointer"
+                                />
+                                <div className="flex items-center gap-1">
+                                  <button
+                                    onClick={() => toggleMute(project.name)}
+                                    className="p-1 rounded hover:bg-white/20 transition-colors"
+                                    aria-label={videoMuted ? 'Unmute' : 'Mute'}
+                                  >
+                                    {videoMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                                  </button>
+                                  <input
+                                    type="range"
+                                    min={0}
+                                    max={1}
+                                    step={0.05}
+                                    value={videoMuted ? 0 : videoVolume}
+                                    onChange={(e) => handleVolumeChange(project.name, parseFloat(e.target.value))}
+                                    className="w-16 h-1 accent-white/80 bg-white/30 rounded-full cursor-pointer"
+                                  />
+                                </div>
+                                <button
+                                  onClick={() => toggleFullscreen(project.name)}
+                                  className="p-1 rounded hover:bg-white/20 transition-colors"
+                                  aria-label="Pantalla completa"
+                                >
+                                  <Maximize className="w-5 h-5" />
+                                </button>
                               </motion.div>
                             </div>
                           ) : (
-                            /* Video Thumbnail/Preview */
-                            <div className="absolute inset-0">
-                              {/* Background Video Preview (muted) */}
-                              {isClient ? (
-                                <video
-                                  className="w-full h-full object-cover opacity-40"
-                                  muted
-                                  loop
-                                  autoPlay
-                                  playsInline
-                                  onLoadedData={(e) => {
-                                    const video = e.target as HTMLVideoElement;
-                                    video.playbackRate = 2.0; // Velocidad x2
-                                    video.currentTime = 10; // Start at 10 seconds for better preview
-                                  }}
-                                  onCanPlay={(e) => {
-                                    const video = e.target as HTMLVideoElement;
-                                    video.playbackRate = 2.0; // Asegurar velocidad x2
-                                  }}
-                                  onEnded={(e) => {
-                                    const video = e.target as HTMLVideoElement;
-                                    video.currentTime = 10; // Restart from 10 seconds
-                                    video.play(); // Auto restart
-                                  }}
+                            /* Portada + mini preview al hover + click para video completo (estilo YouTube) */
+                            <div
+                              className="absolute inset-0"
+                              onMouseEnter={() => setVideoHoverPreview(project.name)}
+                              onMouseLeave={() => setVideoHoverPreview(null)}
+                            >
+                              {/* Por defecto: imagen de portada (background + img para que siempre se vea) */}
+                              {videoHoverPreview !== project.name ? (
+                                <div
+                                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                                  style={{ backgroundImage: `url(${imageBase}${project.image})` }}
+                                  aria-hidden
                                 >
-                                  <source src={project.video} type="video/mp4" />
-                                </video>
+                                  <img
+                                    src={`${imageBase}${project.image}`}
+                                    alt={project.name}
+                                    className="w-full h-full object-cover block"
+                                    loading="eager"
+                                    decoding="async"
+                                  />
+                                </div>
                               ) : (
-                                /* Loading placeholder */
-                                <div className="w-full h-full bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800 animate-pulse" />
+                                /* Al pasar el mouse: mini reproducción (muted, loop) */
+                                isClient && (
+                                  <video
+                                    className="w-full h-full object-cover"
+                                    muted
+                                    loop
+                                    playsInline
+                                    data-preview={project.name}
+                                    onCanPlay={(e) => e.currentTarget.play()}
+                                    onLoadedData={(e) => {
+                                      const v = e.currentTarget;
+                                      v.playbackRate = 2.0;
+                                      v.currentTime = 10;
+                                    }}
+                                    onEnded={(e) => {
+                                      e.currentTarget.currentTime = 10;
+                                      e.currentTarget.play();
+                                    }}
+                                  >
+                                    <source src={project.video} type="video/mp4" />
+                                  </video>
+                                )
                               )}
-                              
-                                    {/* Play/Pause Overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-primary-500/30 to-accent-500/30 flex items-center justify-center">
-                                      <div className="text-center">
-                                        <motion.button
-                                          whileHover={{ scale: 1.1 }}
-                                          whileTap={{ scale: 0.95 }}
-                                          onClick={() => toggleVideo(project.name)}
-                                          className="w-20 h-20 bg-white/95 dark:bg-slate-800/95 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 mb-4 backdrop-blur-sm"
-                                        >
-                                          <Play className="w-8 h-8 text-primary-600 ml-1" />
-                                        </motion.button>
-                                        <p className="text-white font-semibold text-lg drop-shadow-lg">
-                                          {language === 'es' ? 'Ver Demo Completo' : 'Watch Full Demo'}
-                                        </p>
-                                        <p className="text-white/80 text-sm mt-1">
-                                          {language === 'es' ? 'Click para ver a tamaño completo (2x)' : 'Click for full size (2x speed)'}
-                                        </p>
-                                      </div>
-                                    </div>
+                              {/* Overlay con botón Play: click = video completo. Círculo centrado en el cuadrado del video. */}
+                              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-accent-500/20 group/overlay">
+                                {/* Círculo centrado exactamente en el medio del cuadrado */}
+                                <motion.button
+                                  whileHover={{ scale: 1.1 }}
+                                  whileTap={{ scale: 0.95 }}
+                                  onClick={() => toggleVideo(project.name)}
+                                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-white/95 dark:bg-slate-800/95 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm z-10"
+                                >
+                                  <Play className="w-8 h-8 text-primary-600" />
+                                </motion.button>
+                                {/* Texto debajo del centro */}
+                                <div className="absolute left-1/2 -translate-x-1/2 top-[calc(50%+3rem)] text-center">
+                                  <p className="text-white font-semibold text-lg drop-shadow-lg">
+                                    {language === 'es' ? 'Ver Demo Completo' : 'Watch Full Demo'}
+                                  </p>
+                                  <p className="text-white/80 text-sm mt-1">
+                                    {language === 'es' ? 'Click para ver a tamaño completo (2x)' : 'Click for full size (2x speed)'}
+                                  </p>
+                                </div>
+                              </div>
                             </div>
                           )}
                           
@@ -1040,8 +1159,8 @@ export default function Home() {
                         </div>
                       </div>
                       
-                      {/* Project Info */}
-                      <div className={`p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 0 ? 'order-2' : 'lg:order-1'}`}>
+                      {/* Project Info - mismo ancho que el video */}
+                      <div className={`p-8 lg:p-12 flex flex-col justify-center min-w-0 ${index % 2 === 0 ? 'order-2' : 'lg:order-1'}`}>
                         <motion.div
                           initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
                           whileInView={{ opacity: 1, x: 0 }}
