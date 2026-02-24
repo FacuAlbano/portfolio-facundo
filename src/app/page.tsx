@@ -8,7 +8,6 @@ import {
   Github, 
   Linkedin, 
   MapPin,
-  Calendar,
   GraduationCap,
   Briefcase,
   Sun,
@@ -86,14 +85,14 @@ export default function Home() {
     es: {
       hero: {
         title: "Facundo Ernesto Albano",
-        subtitle: "Desarrollador Full Stack",
-        description: "Transformo ideas en aplicaciones robustas y escalables. Especializado en tecnologías modernas con enfoque en experiencia de usuario excepcional y código de calidad empresarial."
+        subtitle: "Full Stack Developer (React · Node.js · PostgreSQL)",
+        description: "Construyo aplicaciones web modernas, seguras y escalables, enfocadas en rendimiento, arquitectura limpia y experiencia de usuario.",
+        description2: "Experiencia desarrollando soluciones completas desde el diseño de la base de datos hasta la implementación en producción."
       },
       about: {
         title: "Perfil Profesional",
-        description: "Soy un desarrollador Full Stack con sólida formación técnica y pasión por la innovación tecnológica. Mi enfoque se centra en crear soluciones que no solo funcionen, sino que superen las expectativas del usuario y agreguen valor real al negocio. Mi experiencia en desarrollo web moderno me permite abordar proyectos complejos con metodologías ágiles y mejores prácticas de la industria.",
+        description: "Soy desarrollador Full Stack con enfoque en arquitectura moderna y buenas prácticas de desarrollo. Trabajo construyendo aplicaciones completas, desde el modelado de base de datos hasta la interfaz de usuario, aplicando validaciones seguras y estructuras escalables. Me interesa crear soluciones que no solo funcionen, sino que sean mantenibles, eficientes y preparadas para crecer.",
         details: [
-          { icon: Calendar, text: "29 años de edad - Nacido el 14 de Agosto de 1996" },
           { icon: MapPin, text: "Rosario, Santa Fe, Argentina - Disponible para trabajo remoto" },
           { icon: GraduationCap, text: "Técnico en Desarrollo de Software - URQUIZA" },
           { icon: Briefcase, text: "Enfoque en desarrollo web y aplicaciones escalables" }
@@ -101,6 +100,7 @@ export default function Home() {
       },
       skills: {
         title: "Competencias Técnicas",
+        stats: ["Proyectos Full Stack desarrollados", "Aplicaciones con arquitectura moderna", "Experiencia práctica en desarrollo web"],
         categories: [
           {
             name: "Frontend Development",
@@ -125,15 +125,27 @@ export default function Home() {
         subtitle: "Explora mis proyectos más destacados con demostraciones interactivas",
         items: [
           {
-            name: "TRRO - Sistema de Gestión Integral",
-            description: "Aplicación web empresarial desarrollada como proyecto final de mi carrera técnica. Demuestra mi capacidad para diseñar e implementar soluciones full-stack complejas, con arquitectura escalable y experiencia de usuario intuitiva.",
-            tech: ["React", "Node.js", "MySQL", "Express.js", "JWT Auth", "Material-UI"],
-            status: "Proyecto Final - Demostración de Competencias",
-            link: null,
-            github: "https://github.com/FacuAlbano/TransitoRosario",
-            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/trro-demo.mp4",
-            image: "/images/image-trro.png",
-            features: ["Gestión de usuarios", "Dashboard analítico", "Sistema de reportes", "API RESTful"],
+            name: "Sunshine – Sistema de Gestión Web Full Stack",
+            description: "Sistema de gestión web desarrollado para administrar procesos internos y datos críticos de forma segura y escalable. Proyecto productivo en evolución continua donde participé en el desarrollo completo del frontend y backend, aplicando arquitectura modular, validación en doble capa (cliente/servidor) y autenticación segura.",
+            tech: ["React 19", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM", "TailwindCSS", "Zod", "React Hook Form", "Argon2", "Vite"],
+            link: "https://sunshine-v2.vercel.app/",
+            status: "Proyecto productivo - En evolución",
+            github: "https://github.com/FacuAlbano",
+            video: "/videos/sunshine-demo.mp4",
+            image: "/images/image-sunshine.png",
+            features: ["Autenticación segura con hash de contraseñas", "Gestión de usuarios y control de roles", "Validación cliente y servidor", "CRUD completo con PostgreSQL", "Migraciones y control de esquema", "Componentes reutilizables y UI moderna", "Arquitectura preparada para producción"],
+            category: "Full Stack"
+          },
+          {
+            name: "Clínica – Sistema de Gestión Médica Full Stack",
+            description: "Sistema web desarrollado para la gestión integral de una clínica médica, incluyendo administración de pacientes, turnos y control de información sensible. Sistema de gestión clínica desarrollado con arquitectura modular y validación en doble capa, enfocado en seguridad, organización de datos y escalabilidad.",
+            tech: ["React 19", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM", "TailwindCSS", "Zod", "React Hook Form", "Argon2"],
+            link: "https://consultorio-topaz.vercel.app/",
+            status: "Full Stack - Gestión médica",
+            github: "https://github.com/FacuAlbano/consultorio",
+            video: "/videos/clinica-demo.mp4",
+            image: "/images/image-consultorio.png",
+            features: ["Gestión de pacientes", "Administración de turnos médicos", "Control de usuarios y roles", "Validación cliente/servidor", "Persistencia de datos con PostgreSQL", "Arquitectura modular escalable", "Preparado para entorno productivo"],
             category: "Full Stack"
           },
           {
@@ -159,6 +171,18 @@ export default function Home() {
             image: "/images/image-porfolio.png",
             features: ["Animaciones fluidas", "Modo oscuro", "Multiidioma", "Diseño responsive"],
             category: "Frontend"
+          },
+          {
+            name: "TRRO - Sistema de Gestión Integral",
+            description: "Sistema de gestión integral desarrollado como solución full stack con API REST, autenticación y dashboard administrativo. Demuestra capacidad para diseñar arquitecturas escalables y manejar flujos completos de datos.",
+            tech: ["React", "Node.js", "MySQL", "Express.js", "JWT Auth", "Material-UI"],
+            status: "Solución empresarial full stack",
+            link: null,
+            github: "https://github.com/FacuAlbano/TransitoRosario",
+            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/trro-demo.mp4",
+            image: "/images/image-trro.png",
+            features: ["Gestión de usuarios", "Dashboard analítico", "Sistema de reportes", "API RESTful"],
+            category: "Full Stack"
           }
         ]
       },
@@ -180,7 +204,7 @@ export default function Home() {
           {
             level: "Educación Superior",
             school: "URQUIZA - Técnico en Desarrollo de Software",
-            status: "En progreso (4 materias pendientes)",
+            status: "Próximo a graduarme (2 materias pendientes)",
             description: "Especialización en desarrollo de software con enfoque práctico"
           }
         ]
@@ -221,31 +245,43 @@ export default function Home() {
             icon: "📈"
           }
         ],
-        transition: "Esta combinación única de experiencia administrativa y pasión por la tecnología me permite aportar una perspectiva integral a cualquier equipo de desarrollo."
+        transition: "Mi experiencia administrativa me permitió desarrollar habilidades clave como organización, comunicación efectiva y resolución de problemas en entornos dinámicos, competencias que aplico directamente en el desarrollo de software."
       },
       contact: {
         title: "¿Listo para Colaborar?",
-        subtitle: "Busco oportunidades para aplicar mis habilidades en proyectos desafiantes y crecer profesionalmente en un entorno dinámico."
+        subtitle: "Estoy abierto a oportunidades como Full Stack Developer donde pueda aportar valor técnico desde el primer día y seguir creciendo en entornos desafiantes. Si querés trabajar en un proyecto moderno, escalable y bien estructurado, conversemos."
+      },
+      howIWork: {
+        title: "Cómo Trabajo",
+        items: [
+          "Arquitectura modular y escalable",
+          "Validación en doble capa (cliente + servidor)",
+          "Enfoque en seguridad y buenas prácticas",
+          "Código limpio y mantenible",
+          "Separación clara de responsabilidades",
+          "Optimización de consultas y rendimiento"
+        ]
       }
     },
     en: {
       hero: {
         title: "Facundo Ernesto Albano",
-        subtitle: "Full Stack Developer & Digital Solutions Architect",
-        description: "I transform ideas into robust and scalable applications. Specialized in modern technologies with focus on exceptional user experience and enterprise-grade code quality."
+        subtitle: "Full Stack Developer (React · Node.js · PostgreSQL)",
+        description: "I build modern, secure and scalable web applications, focused on performance, clean architecture and user experience.",
+        description2: "Experience developing complete solutions from database design to production deployment."
       },
       about: {
         title: "Professional Profile",
-        description: "I'm a Full Stack developer with solid technical training and passion for technological innovation. My approach focuses on creating solutions that not only work, but exceed user expectations and add real business value. My experience in modern web development allows me to tackle complex projects with agile methodologies and industry best practices.",
+        description: "I'm a Full Stack developer focused on modern architecture and development best practices. I build complete applications, from database modeling to user interface, applying secure validation and scalable structures. I aim to create solutions that not only work, but are maintainable, efficient and ready to grow.",
         details: [
-          { icon: Calendar, text: "29 years old - Born on August 14, 1996" },
           { icon: MapPin, text: "Rosario, Santa Fe, Argentina - Available for remote work" },
-          { icon: GraduationCap, text: "Software Development Technician - URQUIZA (4 subjects pending)" },
-          { icon: Briefcase, text: "Focus on enterprise web development and scalable applications" }
+          { icon: GraduationCap, text: "Software Development Technician - URQUIZA" },
+          { icon: Briefcase, text: "Focus on web development and scalable applications" }
         ]
       },
       skills: {
         title: "Technical Competencies",
+        stats: ["Full Stack projects developed", "Applications with modern architecture", "Practical experience in web development"],
         categories: [
           {
             name: "Frontend Development",
@@ -270,15 +306,27 @@ export default function Home() {
         subtitle: "Explore my featured projects with interactive demonstrations",
         items: [
           {
-            name: "TRRO - Comprehensive Management System",
-            description: "Enterprise web application developed as my technical career final project. Demonstrates my ability to design and implement complex full-stack solutions, with scalable architecture and intuitive user experience.",
-            tech: ["React", "Node.js", "MySQL", "Express.js", "JWT Auth", "Material-UI"],
-            status: "Final Project - Skills Demonstration",
-            link: null,
-            github: "https://github.com/FacuAlbano/TransitoRosario",
-            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/trro-demo.mp4",
-            image: "/images/image-trro.png",
-            features: ["User management", "Analytics dashboard", "Report system", "RESTful API"],
+            name: "Sunshine – Full Stack Web Management System",
+            description: "Web management system developed to handle internal processes and critical data securely and at scale. Production project in continuous evolution where I participated in the full frontend and backend development, applying modular architecture, double-layer validation (client/server) and secure authentication.",
+            tech: ["React 19", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM", "TailwindCSS", "Zod", "React Hook Form", "Argon2", "Vite"],
+            link: "https://sunshine-v2.vercel.app/",
+            status: "Production project - Evolving",
+            github: "https://github.com/FacuAlbano",
+            video: "/videos/sunshine-demo.mp4",
+            image: "/images/image-sunshine.png",
+            features: ["Secure authentication with password hashing", "User management and role control", "Client and server validation", "Full CRUD with PostgreSQL", "Migrations and schema control", "Reusable components and modern UI", "Production-ready architecture"],
+            category: "Full Stack"
+          },
+          {
+            name: "Clínica – Full Stack Medical Management System",
+            description: "Web system developed for the comprehensive management of a medical clinic, including patient administration, appointments and control of sensitive information. Clinic management system built with modular architecture and double-layer validation, focused on security, data organization and scalability.",
+            tech: ["React 19", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM", "TailwindCSS", "Zod", "React Hook Form", "Argon2"],
+            link: "https://consultorio-topaz.vercel.app/",
+            status: "Full Stack - Medical management",
+            github: "https://github.com/FacuAlbano/consultorio",
+            video: "/videos/clinica-demo.mp4",
+            image: "/images/image-consultorio.png",
+            features: ["Patient management", "Medical appointments administration", "User and role control", "Client/server validation", "Data persistence with PostgreSQL", "Scalable modular architecture", "Production-ready"],
             category: "Full Stack"
           },
           {
@@ -304,6 +352,18 @@ export default function Home() {
             image: "/images/image-porfolio.png",
             features: ["Smooth animations", "Dark mode", "Multi-language", "Responsive design"],
             category: "Frontend"
+          },
+          {
+            name: "TRRO - Comprehensive Management System",
+            description: "Comprehensive management system developed as a full stack solution with REST API, authentication and administrative dashboard. Demonstrates ability to design scalable architectures and handle complete data flows.",
+            tech: ["React", "Node.js", "MySQL", "Express.js", "JWT Auth", "Material-UI"],
+            status: "Full stack enterprise solution",
+            link: null,
+            github: "https://github.com/FacuAlbano/TransitoRosario",
+            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/trro-demo.mp4",
+            image: "/images/image-trro.png",
+            features: ["User management", "Analytics dashboard", "Report system", "RESTful API"],
+            category: "Full Stack"
           }
         ]
       },
@@ -325,7 +385,7 @@ export default function Home() {
           {
             level: "Higher Education",
             school: "URQUIZA - Software Development Technician",
-            status: "In progress (4 subjects pending)",
+            status: "Graduating soon (2 subjects pending)",
             description: "Software development specialization with practical focus"
           }
         ]
@@ -366,11 +426,22 @@ export default function Home() {
             icon: "📈"
           }
         ],
-        transition: "This unique combination of administrative experience and passion for technology allows me to bring a comprehensive perspective to any development team."
+        transition: "My administrative experience allowed me to develop key skills such as organization, effective communication and problem-solving in dynamic environments—competencies I apply directly in software development."
       },
       contact: {
         title: "Ready to Collaborate?",
-        subtitle: "I'm seeking opportunities to apply my skills in challenging projects and grow professionally in a dynamic environment."
+        subtitle: "I'm open to opportunities as a Full Stack Developer where I can add technical value from day one and keep growing in challenging environments. If you want to work on a modern, scalable and well-structured project, let's talk."
+      },
+      howIWork: {
+        title: "How I Work",
+        items: [
+          "Modular and scalable architecture",
+          "Double-layer validation (client + server)",
+          "Focus on security and best practices",
+          "Clean and maintainable code",
+          "Clear separation of responsibilities",
+          "Query and performance optimization"
+        ]
       }
     }
   };
@@ -481,17 +552,16 @@ export default function Home() {
     }
   };
 
-  // Download CV + Cover Letter handler
+  // Download CV + Cover Letter handler (ES: CV + Carta | EN: Resume + Cover Letter)
   const downloadCV = () => {
-    // Definir archivos según idioma
-    const files = language === 'es' 
+    const files = language === 'es'
       ? [
           { path: '/documents/CV_Facundo_Albano.pdf', name: 'CV_Facundo_Albano.pdf' },
-          { path: '/documents/Carta de presentacion  Porfolio.docx', name: 'Carta_Presentacion_Facundo_Albano.docx' }
+          { path: '/documents/Carta_Presentacion_Facundo_Albano.docx', name: 'Carta_Presentacion_Facundo_Albano.docx' }
         ]
       : [
           { path: '/documents/Facundo_Albano_Software_Developer_Resume.pdf', name: 'Facundo_Albano_Software_Developer_Resume.pdf' },
-          { path: '/documents/Facundo_Albano_Junior_Web_Developer_Cover_Letter.docx', name: 'Facundo_Albano_Cover_Letter.docx' }
+          { path: '/documents/Facundo_Albano_Cover_Letter.docx', name: 'Facundo_Albano_Cover_Letter.docx' }
         ];
 
     // Descargar cada archivo con un pequeño delay
@@ -643,10 +713,20 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8, duration: 0.6 }}
-                  className="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl"
+                  className="text-lg text-slate-600 dark:text-slate-300 mb-4 leading-relaxed max-w-2xl"
                 >
                   {currentContent.hero.description}
                 </motion.p>
+                {"description2" in currentContent.hero && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.9, duration: 0.6 }}
+                    className="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl"
+                  >
+                    {(currentContent.hero as { description2?: string }).description2}
+                  </motion.p>
+                )}
                 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -873,21 +953,49 @@ export default function Home() {
               viewport={{ once: true }}
               className="mt-16 grid md:grid-cols-3 gap-8"
             >
-              <div className="text-center p-6 bg-primary-50 dark:bg-primary-900/20 rounded-2xl">
-                <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">3+</div>
-                <div className="text-slate-600 dark:text-slate-300 font-medium">Años de Experiencia</div>
-              </div>
-              <div className="text-center p-6 bg-accent-50 dark:bg-accent-900/20 rounded-2xl">
-                <div className="text-3xl font-bold text-accent-600 dark:text-accent-400 mb-2">20+</div>
-                <div className="text-slate-600 dark:text-slate-300 font-medium">Tecnologías Dominadas</div>
-              </div>
-              <div className="text-center p-6 bg-primary-50 dark:bg-primary-900/20 rounded-2xl">
-                <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">10+</div>
-                <div className="text-slate-600 dark:text-slate-300 font-medium">Proyectos Completados</div>
-              </div>
+              {currentContent.skills.stats?.map((stat, i) => (
+                <div key={i} className={`text-center p-6 rounded-2xl ${i === 1 ? "bg-accent-50 dark:bg-accent-900/20" : "bg-primary-50 dark:bg-primary-900/20"}`}>
+                  <div className="text-slate-600 dark:text-slate-300 font-medium">{stat}</div>
+                </div>
+              ))}
             </motion.div>
           </div>
         </section>
+
+        {/* Cómo Trabajo */}
+        {"howIWork" in currentContent && (
+          <section id="how-i-work" className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900/50">
+            <div className="max-w-7xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+              >
+                <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+                  {(currentContent as { howIWork?: { title: string; items: string[] } }).howIWork?.title}
+                </h2>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
+                {((currentContent as { howIWork?: { title: string; items: string[] } }).howIWork?.items ?? []).map((item, i) => (
+                  <div key={i} className="flex items-start gap-3 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200/50 dark:border-slate-700/50">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-500/20 dark:bg-primary-400/20 flex items-center justify-center">
+                      <span className="text-primary-600 dark:text-primary-400 font-bold text-sm">{i + 1}</span>
+                    </div>
+                    <span className="text-slate-700 dark:text-slate-300 font-medium">{item}</span>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </section>
+        )}
 
         {/* Proyectos */}
         <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
@@ -1132,15 +1240,6 @@ export default function Home() {
                                 >
                                   <Play className="w-8 h-8 text-primary-600" />
                                 </motion.button>
-                                {/* Texto debajo del centro */}
-                                <div className="absolute left-1/2 -translate-x-1/2 top-[calc(50%+3rem)] text-center">
-                                  <p className="text-white font-semibold text-lg drop-shadow-lg">
-                                    {language === 'es' ? 'Ver Demo Completo' : 'Watch Full Demo'}
-                                  </p>
-                                  <p className="text-white/80 text-sm mt-1">
-                                    {language === 'es' ? 'Click para ver a tamaño completo (2x)' : 'Click for full size (2x speed)'}
-                                  </p>
-                                </div>
                               </div>
                             </div>
                           )}
