@@ -40,7 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Large files (videos)
-public/videos/*.mp4
-public/videos/*.mov
-public/videos/*.avi
+# Videos pesados opcionales (descomenta si no querés subir .mp4 al repo)
+# public/videos/*.mp4
+# public/videos/*.mov
+# public/videos/*.avi
