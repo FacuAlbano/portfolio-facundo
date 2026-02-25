@@ -131,7 +131,7 @@ export default function Home() {
             link: "https://sunshine-v2.vercel.app/",
             status: "Proyecto productivo - En evolución",
             github: "https://github.com/FacuAlbano",
-            video: "/videos/sunshine-demo.mp4",
+            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/sunshine-demo.mp4",
             image: "/images/image-sunshine.png",
             features: ["Autenticación segura con hash de contraseñas", "Gestión de usuarios y control de roles", "Validación cliente y servidor", "CRUD completo con PostgreSQL", "Migraciones y control de esquema", "Componentes reutilizables y UI moderna", "Arquitectura preparada para producción"],
             category: "Full Stack"
@@ -143,7 +143,7 @@ export default function Home() {
             link: "https://consultorio-topaz.vercel.app/",
             status: "Full Stack - Gestión médica",
             github: "https://github.com/FacuAlbano/consultorio",
-            video: "/videos/clinica-demo.mp4",
+            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/clinica-demo.mp4",
             image: "/images/image-consultorio.png",
             features: ["Gestión de pacientes", "Administración de turnos médicos", "Control de usuarios y roles", "Validación cliente/servidor", "Persistencia de datos con PostgreSQL", "Arquitectura modular escalable", "Preparado para entorno productivo"],
             category: "Full Stack"
@@ -312,7 +312,7 @@ export default function Home() {
             link: "https://sunshine-v2.vercel.app/",
             status: "Production project - Evolving",
             github: "https://github.com/FacuAlbano",
-            video: "/videos/sunshine-demo.mp4",
+            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/sunshine-demo.mp4",
             image: "/images/image-sunshine.png",
             features: ["Secure authentication with password hashing", "User management and role control", "Client and server validation", "Full CRUD with PostgreSQL", "Migrations and schema control", "Reusable components and modern UI", "Production-ready architecture"],
             category: "Full Stack"
@@ -324,7 +324,7 @@ export default function Home() {
             link: "https://consultorio-topaz.vercel.app/",
             status: "Full Stack - Medical management",
             github: "https://github.com/FacuAlbano/consultorio",
-            video: "/videos/clinica-demo.mp4",
+            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/clinica-demo.mp4",
             image: "/images/image-consultorio.png",
             features: ["Patient management", "Medical appointments administration", "User and role control", "Client/server validation", "Data persistence with PostgreSQL", "Scalable modular architecture", "Production-ready"],
             category: "Full Stack"
