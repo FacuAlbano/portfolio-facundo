@@ -204,7 +204,7 @@ export default function Home() {
           {
             level: "Educación Superior",
             school: "URQUIZA - Técnico en Desarrollo de Software",
-            status: "Próximo a graduarme (2 materias pendientes)",
+            status: "Completo",
             description: "Especialización en desarrollo de software con enfoque práctico"
           }
         ]
@@ -385,7 +385,7 @@ export default function Home() {
           {
             level: "Higher Education",
             school: "URQUIZA - Software Development Technician",
-            status: "Graduating soon (2 subjects pending)",
+            status: "Complete",
             description: "Software development specialization with practical focus"
           }
         ]
