@@ -85,7 +85,7 @@ export default function Home() {
     es: {
       hero: {
         title: "Facundo Ernesto Albano",
-        subtitle: "Full Stack Developer (React · Node.js · PostgreSQL)",
+        subtitle: "Full Stack Developer (React · Node.js · PostgreSQL) Open to Work",
         description: "Construyo aplicaciones web modernas, seguras y escalables, enfocadas en rendimiento, arquitectura limpia y experiencia de usuario.",
         description2: "Experiencia desarrollando soluciones completas desde el diseño de la base de datos hasta la implementación en producción."
       },
@@ -96,28 +96,6 @@ export default function Home() {
           { icon: MapPin, text: "Rosario, Santa Fe, Argentina - Disponible para trabajo remoto" },
           { icon: GraduationCap, text: "Técnico en Desarrollo de Software - URQUIZA" },
           { icon: Briefcase, text: "Enfoque en desarrollo web y aplicaciones escalables" }
-        ]
-      },
-      skills: {
-        title: "Competencias Técnicas",
-        stats: ["Proyectos Full Stack desarrollados", "Aplicaciones con arquitectura moderna", "Experiencia práctica en desarrollo web"],
-        categories: [
-          {
-            name: "Frontend Development",
-            skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"]
-          },
-          {
-            name: "Backend Development",
-            skills: ["Node.js", "Express.js", "APIs RESTful", "GraphQL", "Microservicios"]
-          },
-          {
-            name: "Base de Datos",
-            skills: ["SQL", "MongoDB", "MySQL", "PostgreSQL", "Diseño de esquemas"]
-          },
-          {
-            name: "Herramientas & DevOps",
-            skills: ["Git & GitHub", "Docker", "CI/CD", "VS Code", "Figma", "Metodologías Ágiles"]
-          }
         ]
       },
       projects: {
@@ -183,6 +161,28 @@ export default function Home() {
             image: "/images/image-trro.png",
             features: ["Gestión de usuarios", "Dashboard analítico", "Sistema de reportes", "API RESTful"],
             category: "Full Stack"
+          }
+        ]
+      },
+      skills: {
+        title: "Competencias Técnicas",
+        stats: ["Proyectos Full Stack desarrollados", "Aplicaciones con arquitectura moderna", "Experiencia práctica en desarrollo web"],
+        categories: [
+          {
+            name: "Frontend Development",
+            skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"]
+          },
+          {
+            name: "Backend Development",
+            skills: ["Node.js", "Express.js", "APIs RESTful", "GraphQL", "Microservicios"]
+          },
+          {
+            name: "Base de Datos",
+            skills: ["SQL", "MongoDB", "MySQL", "PostgreSQL", "Diseño de esquemas"]
+          },
+          {
+            name: "Herramientas & DevOps",
+            skills: ["Git & GitHub", "Docker", "CI/CD", "VS Code", "Figma", "Metodologías Ágiles"]
           }
         ]
       },
@@ -845,7 +845,7 @@ export default function Home() {
               </p>
             </motion.div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {currentContent.about.details.map((detail, index) => (
                 <motion.div
                   key={index}
@@ -857,6 +857,249 @@ export default function Home() {
                 >
                   <detail.icon className="w-8 h-8 mx-auto mb-3 text-blue-600 dark:text-blue-400" />
                   <p className="text-slate-700 dark:text-slate-300">{detail.text}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Proyectos */}
+        <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="inline-block p-3 bg-primary-100 dark:bg-primary-900/30 rounded-2xl mb-6"
+              >
+                <Zap className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+              </motion.div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+                {currentContent.projects.title}
+              </h2>
+              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                {currentContent.projects.subtitle}
+              </p>
+            </motion.div>
+            
+            <div className="grid gap-8 lg:gap-12">
+              {currentContent.projects.items.map((project, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="group relative"
+                >
+                  <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200 dark:border-slate-700">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-0 items-stretch">
+                      
+                      {/* Video/Image Preview */}
+                      <div className={`relative bg-slate-100 dark:bg-slate-700 min-w-0 flex flex-col ${index % 2 === 0 ? 'order-1' : 'lg:order-2'}`}>
+                        <div className="aspect-video lg:aspect-auto lg:min-h-0 lg:flex-1 relative overflow-hidden">
+                          {videoPlaying === project.name && isClient ? (
+                            <div 
+                              ref={(el) => { videoContainerRefs.current[project.name] = el; }}
+                              className="absolute inset-0"
+                              onMouseEnter={() => setVideoHovering(project.name)}
+                              onMouseLeave={() => setVideoHovering(null)}
+                            >
+                              <video
+                                className="w-full h-full object-cover"
+                                autoPlay
+                                onEnded={() => {
+                                  const video = document.querySelector(`video[data-project="${project.name}"]`) as HTMLVideoElement;
+                                  if (video) { video.currentTime = 0; video.play(); }
+                                }}
+                                onPlay={() => setVideoPaused(prev => ({ ...prev, [project.name]: false }))}
+                                onPause={() => setVideoPaused(prev => ({ ...prev, [project.name]: true }))}
+                                onTimeUpdate={(e) => {
+                                  const v = e.currentTarget;
+                                  setVideoProgress(prev => ({ ...prev, [project.name]: { currentTime: v.currentTime, duration: v.duration } }));
+                                }}
+                                onLoadedMetadata={(e) => {
+                                  const v = e.currentTarget;
+                                  v.playbackRate = 2.0;
+                                  setVideoProgress(prev => ({ ...prev, [project.name]: { currentTime: v.currentTime, duration: v.duration } }));
+                                }}
+                                onLoadedData={(e) => {
+                                  const video = e.target as HTMLVideoElement;
+                                  video.playbackRate = 2.0;
+                                  video.volume = videoVolume;
+                                  video.muted = videoMuted;
+                                }}
+                                onCanPlay={(e) => { (e.target as HTMLVideoElement).playbackRate = 2.0; }}
+                                data-project={project.name}
+                              >
+                                <source src={project.video} type="video/mp4" />
+                              </video>
+                              
+                              <motion.div
+                                className="absolute inset-0 flex items-center justify-center z-10"
+                                initial={{ opacity: 1 }}
+                                animate={{ opacity: videoPaused[project.name] || videoHovering === project.name ? 1 : 0, pointerEvents: videoPaused[project.name] || videoHovering === project.name ? 'auto' : 'none' }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} onClick={() => togglePlayPause(project.name)} className="w-20 h-20 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 backdrop-blur-sm">
+                                  {videoPaused[project.name] ? <Play className="w-8 h-8" /> : <Pause className="w-8 h-8" />}
+                                </motion.button>
+                              </motion.div>
+                              <motion.div
+                                className="absolute top-4 right-4 flex gap-2 z-10"
+                                initial={{ opacity: 1 }}
+                                animate={{ opacity: videoPaused[project.name] || videoHovering === project.name ? 1 : 0, pointerEvents: videoPaused[project.name] || videoHovering === project.name ? 'auto' : 'none' }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <div className="px-2 py-1 bg-black/70 text-white text-xs font-medium rounded">2x</div>
+                                <button onClick={() => setVideoPlaying(null)} className="w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-200">
+                                  <X className="w-5 h-5" />
+                                </button>
+                              </motion.div>
+                              <motion.div
+                                className="absolute bottom-0 left-0 right-0 z-10 flex items-center gap-3 px-3 py-2 bg-black/70 text-white"
+                                initial={{ opacity: 1 }}
+                                animate={{ opacity: videoPaused[project.name] || videoHovering === project.name ? 1 : 0, pointerEvents: videoPaused[project.name] || videoHovering === project.name ? 'auto' : 'none' }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <button onClick={() => togglePlayPause(project.name)} className="p-1 rounded hover:bg-white/20 transition-colors" aria-label={videoPaused[project.name] ? 'Play' : 'Pause'}>
+                                  {videoPaused[project.name] ? <Play className="w-5 h-5" /> : <Pause className="w-5 h-5" />}
+                                </button>
+                                <span className="text-xs tabular-nums min-w-[4rem]">
+                                  {formatTime(videoProgress[project.name]?.currentTime ?? 0)} / {formatTime(videoProgress[project.name]?.duration ?? 0)}
+                                </span>
+                                <input type="range" min={0} max={videoProgress[project.name]?.duration ?? 100} step={0.1} value={videoProgress[project.name]?.currentTime ?? 0} onChange={(e) => handleVideoSeek(project.name, parseFloat(e.target.value))} className="flex-1 h-1.5 accent-white/80 bg-white/30 rounded-full cursor-pointer" />
+                                <div className="flex items-center gap-1">
+                                  <button onClick={() => toggleMute(project.name)} className="p-1 rounded hover:bg-white/20 transition-colors" aria-label={videoMuted ? 'Unmute' : 'Mute'}>
+                                    {videoMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                                  </button>
+                                  <input type="range" min={0} max={1} step={0.05} value={videoMuted ? 0 : videoVolume} onChange={(e) => handleVolumeChange(project.name, parseFloat(e.target.value))} className="w-16 h-1 accent-white/80 bg-white/30 rounded-full cursor-pointer" />
+                                </div>
+                                <button onClick={() => toggleFullscreen(project.name)} className="p-1 rounded hover:bg-white/20 transition-colors" aria-label="Pantalla completa">
+                                  <Maximize className="w-5 h-5" />
+                                </button>
+                              </motion.div>
+                            </div>
+                          ) : (
+                            <div
+                              className="absolute inset-0"
+                              onMouseEnter={() => setVideoHoverPreview(project.name)}
+                              onMouseLeave={() => setVideoHoverPreview(null)}
+                            >
+                              {videoHoverPreview !== project.name ? (
+                                <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${imageBase}${project.image})` }} aria-hidden>
+                                  <img src={`${imageBase}${project.image}`} alt={project.name} className="w-full h-full object-cover block" loading="eager" decoding="async" />
+                                </div>
+                              ) : (
+                                isClient && (
+                                  <video className="w-full h-full object-cover" muted loop playsInline data-preview={project.name} onCanPlay={(e) => e.currentTarget.play()} onLoadedData={(e) => { const v = e.currentTarget; v.playbackRate = 2.0; v.currentTime = 10; }} onEnded={(e) => { e.currentTarget.currentTime = 10; e.currentTarget.play(); }}>
+                                    <source src={project.video} type="video/mp4" />
+                                  </video>
+                                )
+                              )}
+                              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-accent-500/20 group/overlay">
+                                <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} onClick={() => toggleVideo(project.name)} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-white/95 dark:bg-slate-800/95 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm z-10">
+                                  <Play className="w-8 h-8 text-primary-600" />
+                                </motion.button>
+                              </div>
+                            </div>
+                          )}
+                          
+                          <div className="absolute top-4 left-4 z-20 flex gap-2">
+                            <span className="px-3 py-1 bg-primary-600 text-white text-sm font-medium rounded-full shadow-lg">{project.category}</span>
+                            {videoPlaying !== project.name && (
+                              <span className="px-2 py-1 bg-accent-500 text-white text-xs font-medium rounded-full shadow-lg animate-pulse">Auto 2x</span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Project Info */}
+                      <div className={`p-8 lg:p-12 flex flex-col justify-center min-w-0 ${index % 2 === 0 ? 'order-2' : 'lg:order-1'}`}>
+                        <motion.div
+                          initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.6, delay: 0.3 }}
+                          viewport={{ once: true }}
+                        >
+                          <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                            {project.name}
+                          </h3>
+                          <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed text-lg">
+                            {project.description}
+                          </p>
+                          
+                          <div className="mb-6">
+                            <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">
+                              {(currentContent.projects as { labels?: { features: string } }).labels?.features ?? "Características principales"}
+                            </h4>
+                            <div className="grid grid-cols-2 gap-2">
+                              {project.features.map((feature, featureIndex) => (
+                                <div key={featureIndex} className="flex items-center gap-2">
+                                  <Star className="w-4 h-4 text-accent-500" />
+                                  <span className="text-sm text-slate-600 dark:text-slate-300">{feature}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {"challenge" in project && "solution" in project && (project as { challenge?: string; solution?: string }).challenge && (project as { solution?: string }).solution && (
+                            <div className="mb-6 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200/50 dark:border-slate-700/50">
+                              <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2">
+                                {(currentContent.projects as { labels?: { challenge: string } }).labels?.challenge ?? "Desafío técnico"}
+                              </h4>
+                              <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">{(project as { challenge: string }).challenge}</p>
+                              <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2">
+                                {(currentContent.projects as { labels?: { solution: string } }).labels?.solution ?? "Solución"}
+                              </h4>
+                              <p className="text-sm text-slate-600 dark:text-slate-300">{(project as { solution: string }).solution}</p>
+                            </div>
+                          )}
+                          
+                          <div className="mb-6">
+                            <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">
+                              {(currentContent.projects as { labels?: { tech: string } }).labels?.tech ?? "Tecnologías utilizadas"}
+                            </h4>
+                            <div className="flex flex-wrap gap-2">
+                              {project.tech.map((tech, techIndex) => (
+                                <span key={techIndex} className="px-3 py-1.5 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium rounded-lg hover:bg-primary-200 dark:hover:bg-primary-800/50 transition-colors duration-200">
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                          
+                          <div className="flex flex-col sm:flex-row gap-4">
+                            {project.link && (
+                              <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl font-semibold hover:bg-primary-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                                <ExternalLink className="w-5 h-5" />
+                                Ver Proyecto
+                              </a>
+                            )}
+                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary-600 text-primary-600 dark:border-primary-400 dark:text-primary-400 rounded-xl font-semibold hover:bg-primary-600 hover:text-white dark:hover:bg-primary-400 dark:hover:text-slate-900 transition-all duration-300">
+                              <Github className="w-5 h-5" />
+                              Código
+                            </a>
+                          </div>
+                          
+                          <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                            <div className="flex items-center gap-2">
+                              <Award className="w-4 h-4 text-accent-500" />
+                              <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">{project.status}</span>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </div>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -997,357 +1240,73 @@ export default function Home() {
           </section>
         )}
 
-        {/* Proyectos */}
-        <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
+        {/* Arquitectura */}
+        {"architecture" in currentContent && (
+          <section id="architecture" className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900/50">
+            <div className="max-w-7xl mx-auto">
               <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="inline-block p-3 bg-primary-100 dark:bg-primary-900/30 rounded-2xl mb-6"
+                className="text-center mb-12"
               >
-                <Zap className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+                <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+                  {(currentContent as { architecture?: { title: string; subtitle: string; items: { layer: string; stack: string }[] } }).architecture?.title}
+                </h2>
+                <p className="text-xl text-slate-600 dark:text-slate-300">
+                  {(currentContent as { architecture?: { subtitle: string } }).architecture?.subtitle}
+                </p>
               </motion.div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-                {currentContent.projects.title}
-              </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-                {currentContent.projects.subtitle}
-              </p>
-            </motion.div>
-            
-            <div className="grid gap-8 lg:gap-12">
-              {currentContent.projects.items.map((project, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  className="group relative"
-                >
-                  <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200 dark:border-slate-700">
-                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-0 items-stretch">
-                      
-                      {/* Video/Image Preview - misma altura que la columna de contenido */}
-                      <div className={`relative bg-slate-100 dark:bg-slate-700 min-w-0 flex flex-col ${index % 2 === 0 ? 'order-1' : 'lg:order-2'}`}>
-                        <div className="aspect-video lg:aspect-auto lg:min-h-0 lg:flex-1 relative overflow-hidden">
-                          {videoPlaying === project.name && isClient ? (
-                            /* Video Player */
-                            <div 
-                              ref={(el) => { videoContainerRefs.current[project.name] = el; }}
-                              className="absolute inset-0"
-                              onMouseEnter={() => setVideoHovering(project.name)}
-                              onMouseLeave={() => setVideoHovering(null)}
-                            >
-                              <video
-                                className="w-full h-full object-cover"
-                                autoPlay
-                                onEnded={() => {
-                                  const video = document.querySelector(`video[data-project="${project.name}"]`) as HTMLVideoElement;
-                                  if (video) {
-                                    video.currentTime = 0; // Restart from beginning
-                                    video.play(); // Auto restart
-                                  }
-                                }}
-                                onPlay={() => setVideoPaused(prev => ({ ...prev, [project.name]: false }))}
-                                onPause={() => setVideoPaused(prev => ({ ...prev, [project.name]: true }))}
-                                onTimeUpdate={(e) => {
-                                  const v = e.currentTarget;
-                                  setVideoProgress(prev => ({ ...prev, [project.name]: { currentTime: v.currentTime, duration: v.duration } }));
-                                }}
-                                onLoadedMetadata={(e) => {
-                                  const v = e.currentTarget;
-                                  v.playbackRate = 2.0;
-                                  setVideoProgress(prev => ({ ...prev, [project.name]: { currentTime: v.currentTime, duration: v.duration } }));
-                                }}
-                                onLoadedData={(e) => {
-                                  const video = e.target as HTMLVideoElement;
-                                  video.playbackRate = 2.0; // Velocidad x2
-                                  video.volume = videoVolume;
-                                  video.muted = videoMuted;
-                                }}
-                                onCanPlay={(e) => {
-                                  const video = e.target as HTMLVideoElement;
-                                  video.playbackRate = 2.0; // Asegurar velocidad x2
-                                }}
-                                data-project={project.name}
-                              >
-                                <source src={project.video} type="video/mp4" />
-                                Tu navegador no soporta videos HTML5.
-                              </video>
-                              
-                              {/* Controles del video: visibles al hacer mouse over, se ocultan al salir */}
-                              <motion.div
-                                className="absolute inset-0 flex items-center justify-center z-10"
-                                initial={{ opacity: 1 }}
-                                animate={{
-                                  opacity: videoPaused[project.name] || videoHovering === project.name ? 1 : 0,
-                                  pointerEvents: videoPaused[project.name] || videoHovering === project.name ? 'auto' : 'none',
-                                }}
-                                transition={{ duration: 0.2 }}
-                              >
-                                <motion.button
-                                  whileHover={{ scale: 1.1 }}
-                                  whileTap={{ scale: 0.95 }}
-                                  onClick={() => togglePlayPause(project.name)}
-                                  className="w-20 h-20 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 backdrop-blur-sm"
-                                >
-                                  {videoPaused[project.name] ? (
-                                    <Play className="w-8 h-8" />
-                                  ) : (
-                                    <Pause className="w-8 h-8" />
-                                  )}
-                                </motion.button>
-                              </motion.div>
-                              <motion.div
-                                className="absolute top-4 right-4 flex gap-2 z-10"
-                                initial={{ opacity: 1 }}
-                                animate={{
-                                  opacity: videoPaused[project.name] || videoHovering === project.name ? 1 : 0,
-                                  pointerEvents: videoPaused[project.name] || videoHovering === project.name ? 'auto' : 'none',
-                                }}
-                                transition={{ duration: 0.2 }}
-                              >
-                                <div className="px-2 py-1 bg-black/70 text-white text-xs font-medium rounded">
-                                  2x
-                                </div>
-                                <button
-                                  onClick={() => setVideoPlaying(null)}
-                                  className="w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-200"
-                                >
-                                  <X className="w-5 h-5" />
-                                </button>
-                              </motion.div>
-                              {/* Barra de controles inferior: tiempo, progreso, volumen, fullscreen */}
-                              <motion.div
-                                className="absolute bottom-0 left-0 right-0 z-10 flex items-center gap-3 px-3 py-2 bg-black/70 text-white"
-                                initial={{ opacity: 1 }}
-                                animate={{
-                                  opacity: videoPaused[project.name] || videoHovering === project.name ? 1 : 0,
-                                  pointerEvents: videoPaused[project.name] || videoHovering === project.name ? 'auto' : 'none',
-                                }}
-                                transition={{ duration: 0.2 }}
-                              >
-                                <button
-                                  onClick={() => togglePlayPause(project.name)}
-                                  className="p-1 rounded hover:bg-white/20 transition-colors"
-                                  aria-label={videoPaused[project.name] ? 'Play' : 'Pause'}
-                                >
-                                  {videoPaused[project.name] ? <Play className="w-5 h-5" /> : <Pause className="w-5 h-5" />}
-                                </button>
-                                <span className="text-xs tabular-nums min-w-[4rem]">
-                                  {formatTime(videoProgress[project.name]?.currentTime ?? 0)} / {formatTime(videoProgress[project.name]?.duration ?? 0)}
-                                </span>
-                                <input
-                                  type="range"
-                                  min={0}
-                                  max={videoProgress[project.name]?.duration ?? 100}
-                                  step={0.1}
-                                  value={videoProgress[project.name]?.currentTime ?? 0}
-                                  onChange={(e) => handleVideoSeek(project.name, parseFloat(e.target.value))}
-                                  className="flex-1 h-1.5 accent-white/80 bg-white/30 rounded-full cursor-pointer"
-                                />
-                                <div className="flex items-center gap-1">
-                                  <button
-                                    onClick={() => toggleMute(project.name)}
-                                    className="p-1 rounded hover:bg-white/20 transition-colors"
-                                    aria-label={videoMuted ? 'Unmute' : 'Mute'}
-                                  >
-                                    {videoMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                                  </button>
-                                  <input
-                                    type="range"
-                                    min={0}
-                                    max={1}
-                                    step={0.05}
-                                    value={videoMuted ? 0 : videoVolume}
-                                    onChange={(e) => handleVolumeChange(project.name, parseFloat(e.target.value))}
-                                    className="w-16 h-1 accent-white/80 bg-white/30 rounded-full cursor-pointer"
-                                  />
-                                </div>
-                                <button
-                                  onClick={() => toggleFullscreen(project.name)}
-                                  className="p-1 rounded hover:bg-white/20 transition-colors"
-                                  aria-label="Pantalla completa"
-                                >
-                                  <Maximize className="w-5 h-5" />
-                                </button>
-                              </motion.div>
-                            </div>
-                          ) : (
-                            /* Portada + mini preview al hover + click para video completo (estilo YouTube) */
-                            <div
-                              className="absolute inset-0"
-                              onMouseEnter={() => setVideoHoverPreview(project.name)}
-                              onMouseLeave={() => setVideoHoverPreview(null)}
-                            >
-                              {/* Por defecto: imagen de portada (background + img para que siempre se vea) */}
-                              {videoHoverPreview !== project.name ? (
-                                <div
-                                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                                  style={{ backgroundImage: `url(${imageBase}${project.image})` }}
-                                  aria-hidden
-                                >
-                                  <img
-                                    src={`${imageBase}${project.image}`}
-                                    alt={project.name}
-                                    className="w-full h-full object-cover block"
-                                    loading="eager"
-                                    decoding="async"
-                                  />
-                                </div>
-                              ) : (
-                                /* Al pasar el mouse: mini reproducción (muted, loop) */
-                                isClient && (
-                                  <video
-                                    className="w-full h-full object-cover"
-                                    muted
-                                    loop
-                                    playsInline
-                                    data-preview={project.name}
-                                    onCanPlay={(e) => e.currentTarget.play()}
-                                    onLoadedData={(e) => {
-                                      const v = e.currentTarget;
-                                      v.playbackRate = 2.0;
-                                      v.currentTime = 10;
-                                    }}
-                                    onEnded={(e) => {
-                                      e.currentTarget.currentTime = 10;
-                                      e.currentTarget.play();
-                                    }}
-                                  >
-                                    <source src={project.video} type="video/mp4" />
-                                  </video>
-                                )
-                              )}
-                              {/* Overlay con botón Play: click = video completo. Círculo centrado en el cuadrado del video. */}
-                              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-accent-500/20 group/overlay">
-                                {/* Círculo centrado exactamente en el medio del cuadrado */}
-                                <motion.button
-                                  whileHover={{ scale: 1.1 }}
-                                  whileTap={{ scale: 0.95 }}
-                                  onClick={() => toggleVideo(project.name)}
-                                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-white/95 dark:bg-slate-800/95 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm z-10"
-                                >
-                                  <Play className="w-8 h-8 text-primary-600" />
-                                </motion.button>
-                              </div>
-                            </div>
-                          )}
-                          
-                          {/* Project Category Badge */}
-                          <div className="absolute top-4 left-4 z-20 flex gap-2">
-                            <span className="px-3 py-1 bg-primary-600 text-white text-sm font-medium rounded-full shadow-lg">
-                              {project.category}
-                            </span>
-                            {videoPlaying !== project.name && (
-                              <span className="px-2 py-1 bg-accent-500 text-white text-xs font-medium rounded-full shadow-lg animate-pulse">
-                                Auto 2x
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Project Info - mismo ancho que el video */}
-                      <div className={`p-8 lg:p-12 flex flex-col justify-center min-w-0 ${index % 2 === 0 ? 'order-2' : 'lg:order-1'}`}>
-                        <motion.div
-                          initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.6, delay: 0.3 }}
-                          viewport={{ once: true }}
-                        >
-                          <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
-                    {project.name}
-                  </h3>
-                          
-                          <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed text-lg">
-                    {project.description}
-                  </p>
-                          
-                          {/* Features */}
-                          <div className="mb-6">
-                            <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">
-                              Características principales
-                            </h4>
-                            <div className="grid grid-cols-2 gap-2">
-                              {project.features.map((feature, featureIndex) => (
-                                <div key={featureIndex} className="flex items-center gap-2">
-                                  <Star className="w-4 h-4 text-accent-500" />
-                                  <span className="text-sm text-slate-600 dark:text-slate-300">{feature}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                          
-                          {/* Tech Stack */}
-                          <div className="mb-6">
-                            <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">
-                              Tecnologías utilizadas
-                            </h4>
-                            <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                                  className="px-3 py-1.5 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium rounded-lg hover:bg-primary-200 dark:hover:bg-primary-800/50 transition-colors duration-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto"
+              >
+                {((currentContent as { architecture?: { items: { layer: string; stack: string }[] } }).architecture?.items ?? []).map((item, i) => (
+                  <div key={i} className="flex justify-between items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200/50 dark:border-slate-700/50">
+                    <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">{item.layer}</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300 font-medium text-right">{item.stack}</span>
                   </div>
-                          </div>
-                          
-                          {/* Actions */}
-                          <div className="flex flex-col sm:flex-row gap-4">
-                    {project.link && (
-                      <a
-                        href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl font-semibold hover:bg-primary-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-                      >
-                                <ExternalLink className="w-5 h-5" />
-                                Ver Proyecto
-                      </a>
-                    )}
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary-600 text-primary-600 dark:border-primary-400 dark:text-primary-400 rounded-xl font-semibold hover:bg-primary-600 hover:text-white dark:hover:bg-primary-400 dark:hover:text-slate-900 transition-all duration-300"
-                            >
-                              <Github className="w-5 h-5" />
-                              Código
-                            </a>
-                          </div>
-                          
-                          {/* Status */}
-                          <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
-                            <div className="flex items-center gap-2">
-                              <Award className="w-4 h-4 text-accent-500" />
-                              <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">
-                                {project.status}
-                              </span>
-                            </div>
-                          </div>
-                        </motion.div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                ))}
+              </motion.div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
+
+        {/* Lo que me gusta resolver */}
+        {"whatILike" in currentContent && (
+          <section id="what-i-like" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+            <div className="max-w-7xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="text-center mb-12"
+              >
+                <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+                  {(currentContent as { whatILike?: { title: string; items: string[] } }).whatILike?.title}
+                </h2>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="flex flex-wrap justify-center gap-3"
+              >
+                {((currentContent as { whatILike?: { items: string[] } }).whatILike?.items ?? []).map((item, i) => (
+                  <span key={i} className="px-5 py-2.5 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-xl font-medium text-lg">
+                    {item}
+                  </span>
+                ))}
+              </motion.div>
+            </div>
+          </section>
+        )}
 
         {/* Educación */}
         <section className="py-20 px-4 sm:px-6 lg:px-8">
