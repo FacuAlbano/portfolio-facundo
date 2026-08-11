@@ -85,363 +85,333 @@ export default function Home() {
     es: {
       hero: {
         title: "Facundo Ernesto Albano",
-        subtitle: "Full Stack Developer (React · Node.js · PostgreSQL) Open to Work",
-        description: "Construyo aplicaciones web modernas, seguras y escalables, enfocadas en rendimiento, arquitectura limpia y experiencia de usuario.",
-        description2: "Experiencia desarrollando soluciones completas desde el diseño de la base de datos hasta la implementación en producción."
+        subtitle: "Full Stack Developer · React · TypeScript · Node.js · PostgreSQL · Open to Work",
+        description: "Desarrollador Full Stack freelance. Sistemas reales en producción: frontend, backend, APIs, autenticación y modelado de datos."
       },
       about: {
         title: "Perfil Profesional",
-        description: "Soy desarrollador Full Stack con enfoque en arquitectura moderna y buenas prácticas de desarrollo. Trabajo construyendo aplicaciones completas, desde el modelado de base de datos hasta la interfaz de usuario, aplicando validaciones seguras y estructuras escalables. Me interesa crear soluciones que no solo funcionen, sino que sean mantenibles, eficientes y preparadas para crecer.",
+        description: "Desarrollador Full Stack con 2 años de experiencia profesional freelance desarrollando aplicaciones web en producción. Experiencia en React, TypeScript, Node.js y PostgreSQL, participando en el desarrollo completo de sistemas reales para clientes: frontend, backend, APIs, autenticación, validación y modelado de bases de datos. Orientado a crear soluciones escalables, seguras y con buena experiencia de usuario. Busco integrarme a un equipo donde pueda aportar valor técnico y continuar creciendo profesionalmente.",
         details: [
-          { icon: MapPin, text: "Rosario, Santa Fe, Argentina - Disponible para trabajo remoto" },
-          { icon: GraduationCap, text: "Técnico en Desarrollo de Software - URQUIZA" },
-          { icon: Briefcase, text: "Enfoque en desarrollo web y aplicaciones escalables" }
+          { icon: MapPin, text: "Rosario, Santa Fe, Argentina — Disponible para trabajo remoto" },
+          { icon: GraduationCap, text: "Tecnicatura Superior en Desarrollo de Software — URQUIZA" },
+          { icon: Briefcase, text: "Freelance 2024 – Actualidad · Sistemas en producción" }
         ]
       },
       projects: {
-        title: "Portfolio de Proyectos",
-        subtitle: "Explora mis proyectos más destacados con demostraciones interactivas",
+        title: "Proyectos destacados",
+        subtitle: "Sistemas reales en producción — mismos proyectos que en el CV",
+        labels: { features: "Qué incluye", tech: "Stack" },
         items: [
           {
-            name: "Sunshine – Sistema de Gestión Web Full Stack",
-            description: "Sistema de gestión web desarrollado para administrar procesos internos y datos críticos de forma segura y escalable. Proyecto productivo en evolución continua donde participé en el desarrollo completo del frontend y backend, aplicando arquitectura modular, validación en doble capa (cliente/servidor) y autenticación segura.",
-            tech: ["React 19", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM", "TailwindCSS", "Zod", "React Hook Form", "Argon2", "Vite"],
+            name: "Sunshine — Sistema de Gestión Web",
+            description: "Aplicación full stack en producción para la gestión de un instituto educativo. Frontend con React 19 + TypeScript y backend con Node.js. Autenticación segura con Argon2, validación cliente/servidor con Zod y PostgreSQL.",
+            tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM", "Tailwind CSS"],
             link: "https://sunshine-v2.vercel.app/",
-            status: "Proyecto productivo - En evolución",
+            status: "En producción",
             github: "https://github.com/FacuAlbano",
             video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/sunshine-demo.mp4",
             image: "/images/image-sunshine.png",
-            features: ["Autenticación segura con hash de contraseñas", "Gestión de usuarios y control de roles", "Validación cliente y servidor", "CRUD completo con PostgreSQL", "Migraciones y control de esquema", "Componentes reutilizables y UI moderna", "Arquitectura preparada para producción"],
-            category: "Full Stack"
+            features: ["Autenticación con Argon2", "Validación cliente/servidor (Zod)", "PostgreSQL y migraciones", "Arquitectura modular"],
+            category: "Full Stack",
+            variant: "featured"
           },
           {
-            name: "Clínica – Sistema de Gestión Médica Full Stack",
-            description: "Sistema web desarrollado para la gestión integral de una clínica médica, incluyendo administración de pacientes, turnos y control de información sensible. Sistema de gestión clínica desarrollado con arquitectura modular y validación en doble capa, enfocado en seguridad, organización de datos y escalabilidad.",
-            tech: ["React 19", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM", "TailwindCSS", "Zod", "React Hook Form", "Argon2"],
+            name: "Sistema de Gestión Clínica",
+            description: "Plataforma web para administración de pacientes y turnos con control de accesos. Frontend con React + TypeScript y API REST con Node.js. Autenticación, roles y manejo seguro de datos.",
+            tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM"],
             link: "https://consultorio-topaz.vercel.app/",
-            status: "Full Stack - Gestión médica",
+            status: "En producción",
             github: "https://github.com/FacuAlbano/consultorio",
             video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/clinica-demo.mp4",
             image: "/images/image-consultorio.png",
-            features: ["Gestión de pacientes", "Administración de turnos médicos", "Control de usuarios y roles", "Validación cliente/servidor", "Persistencia de datos con PostgreSQL", "Arquitectura modular escalable", "Preparado para entorno productivo"],
-            category: "Full Stack"
+            features: ["Pacientes y turnos", "Roles y control de acceso", "API REST + PostgreSQL", "Datos sensibles"],
+            category: "Full Stack",
+            variant: "featured"
+          },
+          {
+            name: "Tu Invitación — Plataforma de Invitaciones Web",
+            description: "Invitaciones web multi-evento con Next.js 15, React, TypeScript y Tailwind; persistencia con Prisma + PostgreSQL (Supabase) y deploy en Vercel. Admin, RSVP, CSV, temas y previews sociales.",
+            tech: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Supabase", "Vercel", "Vitest"],
+            link: "https://tuinvitacion.vercel.app/e/prueba",
+            status: "En producción",
+            github: null,
+            video: null,
+            image: "/images/image-tuinvitacion.png",
+            features: ["Admin: temas, tipografías e imágenes", "RSVP, invitados y export CSV", "Link privado para la organizadora", "QR del álbum y Open Graph"],
+            category: "Full Stack",
+            variant: "featured"
+          },
+          {
+            name: "TRRO — Tránsito Rosario",
+            description: "Aplicación web interactiva con autenticación, búsqueda de rutas, favoritos y reportes.",
+            tech: ["Node.js", "React", "SQL", "APIs", "JSON"],
+            link: null,
+            status: "",
+            github: "https://github.com/FacuAlbano/TransitoRosario",
+            video: null,
+            image: "/images/image-trro.png",
+            features: [],
+            category: "Full Stack",
+            variant: "compact"
           },
           {
             name: "Alterna Servicios Eléctricos",
-            description: "Sitio web corporativo profesional para empresa de servicios eléctricos, implementando diseño responsive, SEO optimizado y funcionalidades avanzadas. Resultado: presencia digital profesional que refleja la calidad de la empresa.",
-            tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "SEO", "Google Analytics"],
+            description: "Sitio web corporativo profesional. Frontend completo, arquitectura MVC y diseño responsive.",
+            tech: ["HTML5", "CSS3", "JavaScript"],
             link: "https://facualbano.github.io/alterna-servicios-electricos",
-            status: "En Producción - Sitio Corporativo",
+            status: "En producción",
             github: "https://github.com/FacuAlbano/alterna-servicios-electricos",
-            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/alterna-demo.mp4",
+            video: null,
             image: "/images/image-alterna.png",
-            features: ["Diseño responsive", "Optimización SEO", "Formularios contacto", "Galería de servicios"],
-            category: "Frontend"
+            features: [],
+            category: "Frontend",
+            variant: "compact"
           },
           {
             name: "Portfolio Personal",
-            description: "Este mismo portfolio que estás viendo ahora. Desarrollado con las tecnologías más modernas para demostrar mis habilidades en desarrollo frontend avanzado y diseño de experiencia de usuario.",
-            tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "React Hooks"],
-            link: 'https://github.com/FacuAlbano/portfolio-facundo',
-            status: "Proyecto Actual - En Desarrollo",
+            description: "Este sitio. Next.js, TypeScript y Tailwind.",
+            tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+            link: "https://falbano.vercel.app/",
+            status: "",
             github: "https://github.com/FacuAlbano/portfolio-facundo",
-            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/portfolio-demo.mp4",
+            video: null,
             image: "/images/image-porfolio.png",
-            features: ["Animaciones fluidas", "Modo oscuro", "Multiidioma", "Diseño responsive"],
-            category: "Frontend"
-          },
-          {
-            name: "TRRO - Sistema de Gestión Integral",
-            description: "Sistema de gestión integral desarrollado como solución full stack con API REST, autenticación y dashboard administrativo. Demuestra capacidad para diseñar arquitecturas escalables y manejar flujos completos de datos.",
-            tech: ["React", "Node.js", "MySQL", "Express.js", "JWT Auth", "Material-UI"],
-            status: "Solución empresarial full stack",
-            link: null,
-            github: "https://github.com/FacuAlbano/TransitoRosario",
-            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/trro-demo.mp4",
-            image: "/images/image-trro.png",
-            features: ["Gestión de usuarios", "Dashboard analítico", "Sistema de reportes", "API RESTful"],
-            category: "Full Stack"
+            features: [],
+            category: "Frontend",
+            variant: "minimal"
           }
         ]
       },
       skills: {
-        title: "Competencias Técnicas",
-        stats: ["Proyectos Full Stack desarrollados", "Aplicaciones con arquitectura moderna", "Experiencia práctica en desarrollo web"],
+        title: "Habilidades técnicas",
+        stats: [],
         categories: [
           {
-            name: "Frontend Development",
-            skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"]
+            name: "Frontend",
+            skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"]
           },
           {
-            name: "Backend Development",
-            skills: ["Node.js", "Express.js", "APIs RESTful", "GraphQL", "Microservicios"]
+            name: "Backend",
+            skills: ["Node.js", "APIs REST", "Server Actions", "JWT", "Argon2"]
           },
           {
-            name: "Base de Datos",
-            skills: ["SQL", "MongoDB", "MySQL", "PostgreSQL", "Diseño de esquemas"]
+            name: "Datos",
+            skills: ["PostgreSQL", "MySQL", "Prisma", "Drizzle ORM", "Supabase"]
           },
           {
-            name: "Herramientas & DevOps",
-            skills: ["Git & GitHub", "Docker", "CI/CD", "VS Code", "Figma", "Metodologías Ágiles"]
+            name: "Calidad y deploy",
+            skills: ["Vitest", "ESLint", "TypeScript", "Git", "GitHub", "Vite", "Vercel"]
           }
         ]
       },
       education: {
-        title: "Formación Académica",
+        title: "Formación académica",
         items: [
           {
-            level: "Educación Primaria",
-            school: "Escuela Juan Arzeno",
+            level: "Tecnicatura Superior en Desarrollo de Software",
+            school: "Escuela Superior N°49 Cap. Justo José de Urquiza, Rosario",
             status: "Completo",
-            description: "Base educativa sólida"
-          },
-          {
-            level: "Educación Secundaria",
-            school: "EEMPA 1317",
-            status: "Completo",
-            description: "Formación integral"
-          },
-          {
-            level: "Educación Superior",
-            school: "URQUIZA - Técnico en Desarrollo de Software",
-            status: "Completo",
-            description: "Especialización en desarrollo de software con enfoque práctico"
+            description: ""
           }
         ]
       },
       experience: {
-        title: "Experiencia Profesional",
-        subtitle: "9 años en administración que me aportan una perspectiva única al desarrollo",
-        intro: "Mi extensa experiencia en el rubro administrativo me ha proporcionado habilidades transferibles valiosas que potencian mi trabajo como desarrollador:",
-        skills: [
+        title: "Experiencia profesional",
+        subtitle: "",
+        intro: "",
+        roles: [
           {
-            title: "Gestión de Proyectos",
-            description: "Coordinación de múltiples tareas y deadlines, metodologías de trabajo eficientes",
-            icon: "📊"
+            title: "Desarrollador Full Stack Freelance",
+            period: "2024 – Actualidad",
+            tag: "",
+            bullets: [
+              "Aplicaciones web y sistemas de gestión para clientes reales, frontend y backend.",
+              "APIs, autenticación, validación y persistencia de datos.",
+              "Mantenimiento, migraciones y evolución de aplicaciones en producción."
+            ]
           },
           {
-            title: "Atención al Detalle",
-            description: "Precisión en documentación y procesos, esencial para código limpio y libre de errores",
-            icon: "🔍"
-          },
-          {
-            title: "Comunicación Efectiva",
-            description: "Experiencia trabajando con diferentes stakeholders y traduciendo requerimientos técnicos",
-            icon: "💬"
-          },
-          {
-            title: "Resolución de Problemas",
-            description: "Análisis crítico y pensamiento sistemático para encontrar soluciones eficientes",
-            icon: "🎯"
-          },
-          {
-            title: "Trabajo en Equipo",
-            description: "Colaboración efectiva en equipos multidisciplinarios y liderazgo de procesos",
-            icon: "🤝"
-          },
-          {
-            title: "Orientación a Resultados",
-            description: "Enfoque en objetivos medibles y mejora continua de procesos",
-            icon: "📈"
+            title: "Administrativo — Terminal de Ómnibus de Rosario",
+            period: "Julio 2016 – Mayo 2026",
+            tag: "Experiencia laboral adicional",
+            bullets: [
+              "Documentación, organización en sistemas digitales y resolución de problemas en tiempo real.",
+              "Atención a usuarios y empresas, trabajo en equipo y coordinación operativa."
+            ]
           }
         ],
-        transition: "Mi experiencia administrativa me permitió desarrollar habilidades clave como organización, comunicación efectiva y resolución de problemas en entornos dinámicos, competencias que aplico directamente en el desarrollo de software."
+        skills: [],
+        transition: ""
       },
       contact: {
         title: "¿Listo para Colaborar?",
         subtitle: "Estoy abierto a oportunidades como Full Stack Developer donde pueda aportar valor técnico desde el primer día y seguir creciendo en entornos desafiantes. Si querés trabajar en un proyecto moderno, escalable y bien estructurado, conversemos."
       },
-      howIWork: {
-        title: "Cómo Trabajo",
-        items: [
-          "Arquitectura modular y escalable",
-          "Validación en doble capa (cliente + servidor)",
-          "Enfoque en seguridad y buenas prácticas",
-          "Código limpio y mantenible",
-          "Separación clara de responsabilidades",
-          "Optimización de consultas y rendimiento"
-        ]
-      }
     },
     en: {
       hero: {
         title: "Facundo Ernesto Albano",
-        subtitle: "Full Stack Developer (React · Node.js · PostgreSQL)",
-        description: "I build modern, secure and scalable web applications, focused on performance, clean architecture and user experience.",
-        description2: "Experience developing complete solutions from database design to production deployment."
+        subtitle: "Full Stack Developer · React · TypeScript · Node.js · PostgreSQL · Open to Work",
+        description: "Freelance Full Stack developer. Real production systems: frontend, backend, APIs, authentication and data modeling."
       },
       about: {
         title: "Professional Profile",
-        description: "I'm a Full Stack developer focused on modern architecture and development best practices. I build complete applications, from database modeling to user interface, applying secure validation and scalable structures. I aim to create solutions that not only work, but are maintainable, efficient and ready to grow.",
+        description: "Full Stack developer with 2 years of professional freelance experience building production web applications. Experience with React, TypeScript, Node.js and PostgreSQL, owning complete systems for clients: frontend, backend, APIs, authentication, validation and database modeling. Focused on scalable, secure solutions with a strong user experience. Looking to join a team where I can add technical value and keep growing.",
         details: [
-          { icon: MapPin, text: "Rosario, Santa Fe, Argentina - Available for remote work" },
-          { icon: GraduationCap, text: "Software Development Technician - URQUIZA" },
-          { icon: Briefcase, text: "Focus on web development and scalable applications" }
+          { icon: MapPin, text: "Rosario, Santa Fe, Argentina — Available for remote work" },
+          { icon: GraduationCap, text: "Software Development Technician — URQUIZA" },
+          { icon: Briefcase, text: "Freelance 2024 – Present · Production systems" }
         ]
       },
       skills: {
-        title: "Technical Competencies",
-        stats: ["Full Stack projects developed", "Applications with modern architecture", "Practical experience in web development"],
+        title: "Technical skills",
+        stats: [],
         categories: [
           {
-            name: "Frontend Development",
-            skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript ES6+"]
+            name: "Frontend",
+            skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"]
           },
           {
-            name: "Backend Development",
-            skills: ["Node.js", "Express.js", "RESTful APIs", "GraphQL", "Microservices"]
+            name: "Backend",
+            skills: ["Node.js", "REST APIs", "Server Actions", "JWT", "Argon2"]
           },
           {
-            name: "Database",
-            skills: ["SQL", "MongoDB", "MySQL", "PostgreSQL", "Schema Design"]
+            name: "Data",
+            skills: ["PostgreSQL", "MySQL", "Prisma", "Drizzle ORM", "Supabase"]
           },
           {
-            name: "Tools & DevOps",
-            skills: ["Git & GitHub", "Docker", "CI/CD", "VS Code", "Figma", "Agile Methodologies"]
+            name: "Quality & deploy",
+            skills: ["Vitest", "ESLint", "TypeScript", "Git", "GitHub", "Vite", "Vercel"]
           }
         ]
       },
       projects: {
-        title: "Project Portfolio",
-        subtitle: "Explore my featured projects with interactive demonstrations",
+        title: "Featured projects",
+        subtitle: "Real production systems — the same projects as on my resume",
+        labels: { features: "What's included", tech: "Stack" },
         items: [
           {
-            name: "Sunshine – Full Stack Web Management System",
-            description: "Web management system developed to handle internal processes and critical data securely and at scale. Production project in continuous evolution where I participated in the full frontend and backend development, applying modular architecture, double-layer validation (client/server) and secure authentication.",
-            tech: ["React 19", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM", "TailwindCSS", "Zod", "React Hook Form", "Argon2", "Vite"],
+            name: "Sunshine — Web Management System",
+            description: "Full stack production app for an educational institute. React 19 + TypeScript frontend and Node.js backend. Secure Argon2 auth, client/server validation with Zod, and PostgreSQL.",
+            tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM", "Tailwind CSS"],
             link: "https://sunshine-v2.vercel.app/",
-            status: "Production project - Evolving",
+            status: "In production",
             github: "https://github.com/FacuAlbano",
             video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/sunshine-demo.mp4",
             image: "/images/image-sunshine.png",
-            features: ["Secure authentication with password hashing", "User management and role control", "Client and server validation", "Full CRUD with PostgreSQL", "Migrations and schema control", "Reusable components and modern UI", "Production-ready architecture"],
-            category: "Full Stack"
+            features: ["Argon2 authentication", "Client/server validation (Zod)", "PostgreSQL and migrations", "Modular architecture"],
+            category: "Full Stack",
+            variant: "featured"
           },
           {
-            name: "Clínica – Full Stack Medical Management System",
-            description: "Web system developed for the comprehensive management of a medical clinic, including patient administration, appointments and control of sensitive information. Clinic management system built with modular architecture and double-layer validation, focused on security, data organization and scalability.",
-            tech: ["React 19", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM", "TailwindCSS", "Zod", "React Hook Form", "Argon2"],
+            name: "Clinic Management System",
+            description: "Web platform for patients and appointments with access control. React + TypeScript frontend and Node.js REST API. Auth, roles and safe handling of sensitive data.",
+            tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Drizzle ORM"],
             link: "https://consultorio-topaz.vercel.app/",
-            status: "Full Stack - Medical management",
+            status: "In production",
             github: "https://github.com/FacuAlbano/consultorio",
             video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/clinica-demo.mp4",
             image: "/images/image-consultorio.png",
-            features: ["Patient management", "Medical appointments administration", "User and role control", "Client/server validation", "Data persistence with PostgreSQL", "Scalable modular architecture", "Production-ready"],
-            category: "Full Stack"
+            features: ["Patients and appointments", "Roles and access control", "REST API + PostgreSQL", "Sensitive data"],
+            category: "Full Stack",
+            variant: "featured"
+          },
+          {
+            name: "Tu Invitación — Web Invitations Platform",
+            description: "Multi-event web invitations with Next.js 15, React, TypeScript and Tailwind; Prisma + PostgreSQL (Supabase) and Vercel. Admin, RSVP, CSV, themes and social previews.",
+            tech: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Supabase", "Vercel", "Vitest"],
+            link: "https://tuinvitacion.vercel.app/e/prueba",
+            status: "In production",
+            github: null,
+            video: null,
+            image: "/images/image-tuinvitacion.png",
+            features: ["Admin: themes, fonts and images", "RSVP, guest list and CSV export", "Private link for the organizer", "Album QR and Open Graph"],
+            category: "Full Stack",
+            variant: "featured"
+          },
+          {
+            name: "TRRO — Tránsito Rosario",
+            description: "Interactive web app with authentication, route search, favorites and reports.",
+            tech: ["Node.js", "React", "SQL", "APIs", "JSON"],
+            link: null,
+            status: "",
+            github: "https://github.com/FacuAlbano/TransitoRosario",
+            video: null,
+            image: "/images/image-trro.png",
+            features: [],
+            category: "Full Stack",
+            variant: "compact"
           },
           {
             name: "Alterna Electrical Services",
-            description: "Professional corporate website for electrical services company, implementing responsive design, SEO optimization and advanced functionalities. Result: professional digital presence that reflects company quality.",
-            tech: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "SEO", "Google Analytics"],
+            description: "Professional corporate website. Full frontend, MVC architecture and responsive design.",
+            tech: ["HTML5", "CSS3", "JavaScript"],
             link: "https://facualbano.github.io/alterna-servicios-electricos",
-            status: "In Production - Corporate Website",
+            status: "In production",
             github: "https://github.com/FacuAlbano/alterna-servicios-electricos",
-            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/alterna-demo.mp4",
+            video: null,
             image: "/images/image-alterna.png",
-            features: ["Responsive design", "SEO optimization", "Contact forms", "Service gallery"],
-            category: "Frontend"
+            features: [],
+            category: "Frontend",
+            variant: "compact"
           },
           {
             name: "Personal Portfolio",
-            description: "This very portfolio you're viewing now. Developed with the most modern technologies to demonstrate my skills in advanced frontend development and user experience design.",
-            tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "React Hooks"],
-            link: 'https://github.com/FacuAlbano/portfolio-facundo',
-            status: "Current Project - In Development",
+            description: "This site. Next.js, TypeScript and Tailwind.",
+            tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+            link: "https://falbano.vercel.app/",
+            status: "",
             github: "https://github.com/FacuAlbano/portfolio-facundo",
-            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/portfolio-demo.mp4",
+            video: null,
             image: "/images/image-porfolio.png",
-            features: ["Smooth animations", "Dark mode", "Multi-language", "Responsive design"],
-            category: "Frontend"
-          },
-          {
-            name: "TRRO - Comprehensive Management System",
-            description: "Comprehensive management system developed as a full stack solution with REST API, authentication and administrative dashboard. Demonstrates ability to design scalable architectures and handle complete data flows.",
-            tech: ["React", "Node.js", "MySQL", "Express.js", "JWT Auth", "Material-UI"],
-            status: "Full stack enterprise solution",
-            link: null,
-            github: "https://github.com/FacuAlbano/TransitoRosario",
-            video: "https://github.com/FacuAlbano/portfolio-facundo/releases/download/v1.0.0/trro-demo.mp4",
-            image: "/images/image-trro.png",
-            features: ["User management", "Analytics dashboard", "Report system", "RESTful API"],
-            category: "Full Stack"
+            features: [],
+            category: "Frontend",
+            variant: "minimal"
           }
         ]
       },
       education: {
-        title: "Academic Background",
+        title: "Education",
         items: [
           {
-            level: "Primary Education",
-            school: "Juan Arzeno School",
+            level: "Software Development Technician",
+            school: "Escuela Superior N°49 Cap. Justo José de Urquiza, Rosario",
             status: "Complete",
-            description: "Solid educational foundation"
-          },
-          {
-            level: "Secondary Education",
-            school: "EEMPA 1317",
-            status: "Complete",
-            description: "Comprehensive formation"
-          },
-          {
-            level: "Higher Education",
-            school: "URQUIZA - Software Development Technician",
-            status: "Complete",
-            description: "Software development specialization with practical focus"
+            description: ""
           }
         ]
       },
       experience: {
-        title: "Professional Experience",
-        subtitle: "9 years in administration providing a unique perspective to development",
-        intro: "My extensive experience in administration has provided me with valuable transferable skills that enhance my work as a developer:",
-        skills: [
+        title: "Professional experience",
+        subtitle: "",
+        intro: "",
+        roles: [
           {
-            title: "Project Management",
-            description: "Coordination of multiple tasks and deadlines, efficient work methodologies",
-            icon: "📊"
+            title: "Full Stack Developer — Freelance",
+            period: "2024 – Present",
+            tag: "",
+            bullets: [
+              "Web apps and management systems for real clients, frontend and backend.",
+              "APIs, authentication, validation and data persistence.",
+              "Maintenance, migrations and evolution of production applications."
+            ]
           },
           {
-            title: "Attention to Detail",
-            description: "Precision in documentation and processes, essential for clean and error-free code",
-            icon: "🔍"
-          },
-          {
-            title: "Effective Communication",
-            description: "Experience working with different stakeholders and translating technical requirements",
-            icon: "💬"
-          },
-          {
-            title: "Problem Solving",
-            description: "Critical analysis and systematic thinking to find efficient solutions",
-            icon: "🎯"
-          },
-          {
-            title: "Teamwork",
-            description: "Effective collaboration in multidisciplinary teams and process leadership",
-            icon: "🤝"
-          },
-          {
-            title: "Results Oriented",
-            description: "Focus on measurable objectives and continuous process improvement",
-            icon: "📈"
+            title: "Administrative — Rosario Bus Terminal",
+            period: "July 2016 – May 2026",
+            tag: "Additional work experience",
+            bullets: [
+              "Documentation, digital systems and real-time problem solving.",
+              "User and company support, teamwork and operational coordination."
+            ]
           }
         ],
-        transition: "My administrative experience allowed me to develop key skills such as organization, effective communication and problem-solving in dynamic environments—competencies I apply directly in software development."
+        skills: [],
+        transition: ""
       },
       contact: {
-        title: "Ready to Collaborate?",
-        subtitle: "I'm open to opportunities as a Full Stack Developer where I can add technical value from day one and keep growing in challenging environments. If you want to work on a modern, scalable and well-structured project, let's talk."
-      },
-      howIWork: {
-        title: "How I Work",
-        items: [
-          "Modular and scalable architecture",
-          "Double-layer validation (client + server)",
-          "Focus on security and best practices",
-          "Clean and maintainable code",
-          "Clear separation of responsibilities",
-          "Query and performance optimization"
-        ]
+        title: "Ready to collaborate?",
+        subtitle: "I'm open to Full Stack Developer roles where I can add technical value from day one and keep growing in challenging environments."
       }
     }
   };
@@ -713,20 +683,10 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8, duration: 0.6 }}
-                  className="text-lg text-slate-600 dark:text-slate-300 mb-4 leading-relaxed max-w-2xl"
+                  className="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl"
                 >
                   {currentContent.hero.description}
                 </motion.p>
-                {"description2" in currentContent.hero && (
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.9, duration: 0.6 }}
-                    className="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl"
-                  >
-                    {(currentContent.hero as { description2?: string }).description2}
-                  </motion.p>
-                )}
                 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -890,8 +850,59 @@ export default function Home() {
               </p>
             </motion.div>
             
-            <div className="grid gap-8 lg:gap-12">
-              {currentContent.projects.items.map((project, index) => (
+            <div className="grid gap-6 lg:gap-8">
+              {currentContent.projects.items.map((project, index) => {
+                const variant = "variant" in project ? (project as { variant?: string }).variant : "featured";
+                const github = "github" in project ? (project as { github?: string | null }).github : null;
+                const video = "video" in project ? (project as { video?: string | null }).video : null;
+                const hasVideo = Boolean(video);
+
+                if (variant === "compact" || variant === "minimal") {
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.05 }}
+                      viewport={{ once: true }}
+                      className={`bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 ${variant === "minimal" ? "p-5" : "p-6"} shadow-sm`}
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+                        {variant === "compact" && (
+                          <img src={`${imageBase}${project.image}`} alt="" className="w-full sm:w-36 h-24 object-cover rounded-xl flex-shrink-0" />
+                        )}
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2 mb-2">
+                            <h3 className="text-lg font-bold text-slate-900 dark:text-white">{project.name}</h3>
+                            <span className="px-2 py-0.5 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-medium rounded-full">{project.category}</span>
+                          </div>
+                          <p className="text-slate-600 dark:text-slate-300 text-sm mb-3">{project.description}</p>
+                          <div className="flex flex-wrap gap-2 mb-3">
+                            {project.tech.map((tech, techIndex) => (
+                              <span key={techIndex} className="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs rounded-md">{tech}</span>
+                            ))}
+                          </div>
+                          <div className="flex flex-wrap gap-3">
+                            {project.link && (
+                              <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 dark:text-primary-400 hover:underline">
+                                <ExternalLink className="w-4 h-4" />
+                                {language === "es" ? "Ver proyecto" : "View project"}
+                              </a>
+                            )}
+                            {github && (
+                              <a href={github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:underline">
+                                <Github className="w-4 h-4" />
+                                {language === "es" ? "Código" : "Code"}
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                }
+
+                return (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 40 }}
@@ -940,7 +951,7 @@ export default function Home() {
                                 onCanPlay={(e) => { (e.target as HTMLVideoElement).playbackRate = 2.0; }}
                                 data-project={project.name}
                               >
-                                <source src={project.video} type="video/mp4" />
+                                <source src={video ?? undefined} type="video/mp4" />
                               </video>
                               
                               <motion.div
@@ -989,35 +1000,22 @@ export default function Home() {
                               </motion.div>
                             </div>
                           ) : (
-                            <div
-                              className="absolute inset-0"
-                              onMouseEnter={() => setVideoHoverPreview(project.name)}
-                              onMouseLeave={() => setVideoHoverPreview(null)}
-                            >
-                              {videoHoverPreview !== project.name ? (
-                                <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${imageBase}${project.image})` }} aria-hidden>
-                                  <img src={`${imageBase}${project.image}`} alt={project.name} className="w-full h-full object-cover block" loading="eager" decoding="async" />
-                                </div>
-                              ) : (
-                                isClient && (
-                                  <video className="w-full h-full object-cover" muted loop playsInline data-preview={project.name} onCanPlay={(e) => e.currentTarget.play()} onLoadedData={(e) => { const v = e.currentTarget; v.playbackRate = 2.0; v.currentTime = 10; }} onEnded={(e) => { e.currentTarget.currentTime = 10; e.currentTarget.play(); }}>
-                                    <source src={project.video} type="video/mp4" />
-                                  </video>
-                                )
-                              )}
-                              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-accent-500/20 group/overlay">
-                                <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} onClick={() => toggleVideo(project.name)} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-white/95 dark:bg-slate-800/95 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm z-10">
-                                  <Play className="w-8 h-8 text-primary-600" />
-                                </motion.button>
+                            <div className="absolute inset-0">
+                              <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${imageBase}${project.image})` }} aria-hidden>
+                                <img src={`${imageBase}${project.image}`} alt={project.name} className="w-full h-full object-cover block" loading="eager" decoding="async" />
                               </div>
+                              {hasVideo && (
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-accent-500/10">
+                                  <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} onClick={() => toggleVideo(project.name)} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white/95 dark:bg-slate-800/95 rounded-full flex items-center justify-center shadow-lg z-10">
+                                    <Play className="w-7 h-7 text-primary-600" />
+                                  </motion.button>
+                                </div>
+                              )}
                             </div>
                           )}
                           
-                          <div className="absolute top-4 left-4 z-20 flex gap-2">
+                          <div className="absolute top-4 left-4 z-20">
                             <span className="px-3 py-1 bg-primary-600 text-white text-sm font-medium rounded-full shadow-lg">{project.category}</span>
-                            {videoPlaying !== project.name && (
-                              <span className="px-2 py-1 bg-accent-500 text-white text-xs font-medium rounded-full shadow-lg animate-pulse">Auto 2x</span>
-                            )}
                           </div>
                         </div>
                       </div>
@@ -1033,35 +1031,24 @@ export default function Home() {
                           <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
                             {project.name}
                           </h3>
-                          <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed text-lg">
+                          <p className="text-slate-600 dark:text-slate-300 mb-5 leading-relaxed">
                             {project.description}
                           </p>
                           
-                          <div className="mb-6">
+                          {project.features.length > 0 && (
+                          <div className="mb-5">
                             <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">
-                              {(currentContent.projects as { labels?: { features: string } }).labels?.features ?? "Características principales"}
+                              {(currentContent.projects as { labels?: { features: string } }).labels?.features ?? "Qué incluye"}
                             </h4>
-                            <div className="grid grid-cols-2 gap-2">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                               {project.features.map((feature, featureIndex) => (
                                 <div key={featureIndex} className="flex items-center gap-2">
-                                  <Star className="w-4 h-4 text-accent-500" />
+                                  <Star className="w-4 h-4 text-accent-500 flex-shrink-0" />
                                   <span className="text-sm text-slate-600 dark:text-slate-300">{feature}</span>
                                 </div>
                               ))}
                             </div>
                           </div>
-
-                          {"challenge" in project && "solution" in project && (project as { challenge?: string; solution?: string }).challenge && (project as { solution?: string }).solution && (
-                            <div className="mb-6 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200/50 dark:border-slate-700/50">
-                              <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2">
-                                {(currentContent.projects as { labels?: { challenge: string } }).labels?.challenge ?? "Desafío técnico"}
-                              </h4>
-                              <p className="text-sm text-slate-600 dark:text-slate-300 mb-3">{(project as { challenge: string }).challenge}</p>
-                              <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2">
-                                {(currentContent.projects as { labels?: { solution: string } }).labels?.solution ?? "Solución"}
-                              </h4>
-                              <p className="text-sm text-slate-600 dark:text-slate-300">{(project as { solution: string }).solution}</p>
-                            </div>
                           )}
                           
                           <div className="mb-6">
@@ -1077,31 +1064,36 @@ export default function Home() {
                             </div>
                           </div>
                           
-                          <div className="flex flex-col sm:flex-row gap-4">
+                          <div className="flex flex-col sm:flex-row gap-3">
                             {project.link && (
-                              <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl font-semibold hover:bg-primary-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                              <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-primary-600 text-white rounded-xl font-semibold hover:bg-primary-700 transition-colors shadow-md">
                                 <ExternalLink className="w-5 h-5" />
-                                Ver Proyecto
+                                {language === "es" ? "Ver proyecto" : "View project"}
                               </a>
                             )}
-                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary-600 text-primary-600 dark:border-primary-400 dark:text-primary-400 rounded-xl font-semibold hover:bg-primary-600 hover:text-white dark:hover:bg-primary-400 dark:hover:text-slate-900 transition-all duration-300">
-                              <Github className="w-5 h-5" />
-                              Código
-                            </a>
+                            {github && (
+                              <a href={github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-2.5 border-2 border-primary-600 text-primary-600 dark:border-primary-400 dark:text-primary-400 rounded-xl font-semibold hover:bg-primary-600 hover:text-white dark:hover:bg-primary-400 dark:hover:text-slate-900 transition-colors">
+                                <Github className="w-5 h-5" />
+                                {language === "es" ? "Código" : "Code"}
+                              </a>
+                            )}
                           </div>
                           
+                          {project.status && (
                           <div className="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
                             <div className="flex items-center gap-2">
                               <Award className="w-4 h-4 text-accent-500" />
                               <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">{project.status}</span>
                             </div>
                           </div>
+                          )}
                         </motion.div>
                       </div>
                     </div>
                   </div>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
@@ -1188,125 +1180,50 @@ export default function Home() {
               })}
             </div>
             
-            {/* Skills Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="mt-16 grid md:grid-cols-3 gap-8"
-            >
-              {currentContent.skills.stats?.map((stat, i) => (
-                <div key={i} className={`text-center p-6 rounded-2xl ${i === 1 ? "bg-accent-50 dark:bg-accent-900/20" : "bg-primary-50 dark:bg-primary-900/20"}`}>
-                  <div className="text-slate-600 dark:text-slate-300 font-medium">{stat}</div>
-                </div>
-              ))}
-            </motion.div>
           </div>
         </section>
 
-        {/* Cómo Trabajo */}
-        {"howIWork" in currentContent && (
-          <section id="how-i-work" className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900/50">
-            <div className="max-w-7xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
-              >
-                <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-                  {(currentContent as { howIWork?: { title: string; items: string[] } }).howIWork?.title}
-                </h2>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-              >
-                {((currentContent as { howIWork?: { title: string; items: string[] } }).howIWork?.items ?? []).map((item, i) => (
-                  <div key={i} className="flex items-start gap-3 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200/50 dark:border-slate-700/50">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-500/20 dark:bg-primary-400/20 flex items-center justify-center">
-                      <span className="text-primary-600 dark:text-primary-400 font-bold text-sm">{i + 1}</span>
+        {/* Experiencia */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-accent-50 to-primary-50 dark:from-accent-900/20 dark:to-primary-900/20">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-2">
+                {currentContent.experience.title}
+              </h2>
+            </motion.div>
+            <div className="space-y-6">
+              {((currentContent.experience as { roles?: { title: string; period: string; tag: string; bullets: string[] }[] }).roles ?? []).map((role, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  viewport={{ once: true }}
+                  className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{role.title}</h3>
+                      {role.tag && <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">{role.tag}</p>}
                     </div>
-                    <span className="text-slate-700 dark:text-slate-300 font-medium">{item}</span>
+                    <span className="text-sm font-medium text-primary-600 dark:text-primary-400 whitespace-nowrap">{role.period}</span>
                   </div>
-                ))}
-              </motion.div>
+                  <ul className="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-300 text-sm">
+                    {role.bullets.map((bullet, i) => (
+                      <li key={i}>{bullet}</li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
             </div>
-          </section>
-        )}
-
-        {/* Arquitectura */}
-        {"architecture" in currentContent && (
-          <section id="architecture" className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900/50">
-            <div className="max-w-7xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="text-center mb-12"
-              >
-                <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-                  {(currentContent as { architecture?: { title: string; subtitle: string; items: { layer: string; stack: string }[] } }).architecture?.title}
-                </h2>
-                <p className="text-xl text-slate-600 dark:text-slate-300">
-                  {(currentContent as { architecture?: { subtitle: string } }).architecture?.subtitle}
-                </p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto"
-              >
-                {((currentContent as { architecture?: { items: { layer: string; stack: string }[] } }).architecture?.items ?? []).map((item, i) => (
-                  <div key={i} className="flex justify-between items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200/50 dark:border-slate-700/50">
-                    <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">{item.layer}</span>
-                    <span className="text-sm text-slate-700 dark:text-slate-300 font-medium text-right">{item.stack}</span>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-          </section>
-        )}
-
-        {/* Lo que me gusta resolver */}
-        {"whatILike" in currentContent && (
-          <section id="what-i-like" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
-            <div className="max-w-7xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="text-center mb-12"
-              >
-                <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-                  {(currentContent as { whatILike?: { title: string; items: string[] } }).whatILike?.title}
-                </h2>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="flex flex-wrap justify-center gap-3"
-              >
-                {((currentContent as { whatILike?: { items: string[] } }).whatILike?.items ?? []).map((item, i) => (
-                  <span key={i} className="px-5 py-2.5 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-xl font-medium text-lg">
-                    {item}
-                  </span>
-                ))}
-              </motion.div>
-            </div>
-          </section>
-        )}
+          </div>
+        </section>
 
         {/* Educación */}
         <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -1349,82 +1266,6 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Experiencia Profesional */}
-        <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-accent-50 to-primary-50 dark:from-accent-900/20 dark:to-primary-900/20">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="inline-block p-3 bg-accent-100 dark:bg-accent-900/30 rounded-2xl mb-6"
-              >
-                <Briefcase className="w-8 h-8 text-accent-600 dark:text-accent-400" />
-              </motion.div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-                {currentContent.experience.title}
-              </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mb-8">
-                {currentContent.experience.subtitle}
-              </p>
-              <p className="text-lg text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed">
-                {currentContent.experience.intro}
-              </p>
-            </motion.div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-              {currentContent.experience.skills.map((skill, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="group relative"
-                >
-                  <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-200 dark:border-slate-700 h-full">
-                    <div className="text-center mb-4">
-                      <div className="text-4xl mb-3">{skill.icon}</div>
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">
-                        {skill.title}
-                      </h3>
-                    </div>
-                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-center">
-                      {skill.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 max-w-4xl mx-auto">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-accent-500 to-primary-500 rounded-xl flex items-center justify-center">
-                    <Star className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-                <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
-                  {currentContent.experience.transition}
-                </p>
-              </div>
-            </motion.div>
           </div>
         </section>
 
